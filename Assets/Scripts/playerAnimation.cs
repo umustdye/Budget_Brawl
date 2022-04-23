@@ -7,6 +7,15 @@ public class playerAnimation : MonoBehaviour
     Animator animator;
     Direction dir;
     // Start is called before the first frame update
+    // animator parameters: may be optimized later
+    //      whenPunchPressed -> button interaction
+    //      whenKickPressed -> button interaction
+    //      whenForwardPressed -> button interaction
+    //      whenBackwardPressed -> button interaction
+    //      whenDefeated -> occurs when player is defeated/health becomes 0/hit by smash attack
+    //      respawn -> occurs when round starts again/when player tries to get up
+    //      whenSmashed -> occurs when player is damaged enough to get down
+    //      whenFlinched -> occurs when player is "hit" by attacks
     void Start()
     {
         dir = Direction.RIGHT;

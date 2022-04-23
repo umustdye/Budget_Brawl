@@ -13,12 +13,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
-    m_Keys:
-    - Assets/Animator/Fighter.controller
-    - Assets/Scenes/San-branch.unity
-    - 
-    m_Values: 010101
-  RevisionSummary: Added empty folders for structure
+    m_Keys: []
+    m_Values: 
+  RevisionSummary: 
   ChangesSearchValue: 
   SelectedHistoryRevision: 
   HistoryPageNumber: 0
