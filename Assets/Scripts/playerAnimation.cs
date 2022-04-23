@@ -19,7 +19,8 @@ public class playerAnimation : MonoBehaviour
     void Start()
     {
         dir = Direction.RIGHT;
-        animator = GetComponent<Animator>();   
+        animator = GetComponent<Animator>();
+        animator.SetBool("onFight", true);
     }
 
     // Update is called once per frame
