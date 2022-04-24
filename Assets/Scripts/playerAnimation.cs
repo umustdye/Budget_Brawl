@@ -20,14 +20,16 @@ public class playerAnimation : MonoBehaviour
     {
         dir = Direction.RIGHT;
         animator = GetComponent<Animator>();
-        animator.SetBool("onFight", true);
+        // animator.SetBool("onFight", true);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // hit animations are reset at every iteration
         animator.SetBool("whenPunchPressed", false);
         animator.SetBool("whenKickPressed", false);
+        
         // press FORWARD
         if(Input.GetKeyDown(KeyCode.G)){
             dir = Direction.RIGHT;
@@ -48,11 +50,17 @@ public class playerAnimation : MonoBehaviour
         }
 
         // maybe change to InputManager-related conditional statements GetButton()
-        if(Input.GetKeyUp(KeyCode.A)){
+        if(Input.GetKeyDown(KeyCode.A)){
             animator.SetBool("whenPunchPressed", true);
         }
-        if(Input.GetKeyUp(KeyCode.S)){
+        if(Input.GetKeyDown(KeyCode.S)){
             animator.SetBool("whenKickPressed", true);
+        }
+        if(Input.GetKeyDown(KeyCode.Q)){
+            animator.SetBool("whenDefensePressed", true);
+        }
+        if(Input.GetKeyUp(KeyCode.Q)){
+            animator.SetBool("whenDefensePressed", false);
         }
     }
 
