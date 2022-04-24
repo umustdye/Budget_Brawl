@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Test script for the sole purpose of testing the camera
 public class MovePlayers : MonoBehaviour
 {
     private Vector3 initialPosition;
@@ -21,6 +22,7 @@ public class MovePlayers : MonoBehaviour
 
         MoveSpeed = Random.Range(5, 15);
 
+        // time in seconds before the 'player' begins moving again
         yield return new WaitForSeconds(Random.Range(2, 5));
 
         StartCoroutine(ChangeDirection());
@@ -28,6 +30,7 @@ public class MovePlayers : MonoBehaviour
     // Update is called once per frame
     void Update() {
         Vector3 position = gameObject.transform.position;
+        // Have game camera move towards destination at a constant speed
         gameObject.transform.position = Vector3.MoveTowards(position, destination, MoveSpeed * Time.deltaTime);
     }
 }
