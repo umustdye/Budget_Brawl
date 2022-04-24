@@ -9,7 +9,7 @@ public class MovePlayers : MonoBehaviour
     private float MoveSpeed;
 
     // Grab "player" position
-    private void Initialize() {
+    private void Awake() {
         initialPosition = gameObject.transform.position;
         StartCoroutine(ChangeDirection());
     }
