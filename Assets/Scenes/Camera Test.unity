@@ -441,6 +441,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 998808812}
+  - component: {fileID: 998808813}
+  - component: {fileID: 998808814}
   m_Layer: 0
   m_Name: Level Center
   m_TagString: Untagged
@@ -462,6 +464,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &998808813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998808811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b87e1a4fb3ea6ba4b9aaaadbd8071df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  halfXBounds: 20
+  halfYBounds: 15
+  halfZBounds: 15
+  cameraBound:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+--- !u!114 &998808814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998808811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 402671dcd00123940b122c08e7050484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraBound: {fileID: 998808813}
 --- !u!1 &1027878052
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +506,7 @@ GameObject:
   - component: {fileID: 1027878055}
   - component: {fileID: 1027878054}
   - component: {fileID: 1027878053}
+  - component: {fileID: 1027878056}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -545,6 +579,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1027878056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027878052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f545979dd8b64c47b7a9a8a9457414f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraBound: {fileID: 998808813}
+  playerList:
+  - {fileID: 1909199105}
+  - {fileID: 634726228}
+  - {fileID: 517560396}
+  positionUpdateSpeed: 5
+  angleUpdateSpeed: 7
+  depthUpdateSpeed: 5
+  maxAngle: 11
+  minAngle: 3
+  maxDepth: -10
+  minDepth: -22
 --- !u!1 &1793723260
 GameObject:
   m_ObjectHideFlags: 0
