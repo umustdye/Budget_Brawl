@@ -18,7 +18,7 @@ public class CameraBounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Get current position of game camera
+        // Get current position of level center
         Vector3 position = gameObject.transform.position;
         Bounds bounds = new Bounds();
 
