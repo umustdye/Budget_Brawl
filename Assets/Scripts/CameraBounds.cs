@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Creates the bounding box for camera movement
+// Code from: https://www.youtube.com/watch?v=_EROILoOnT4
 public class CameraBounds : MonoBehaviour
 {
 

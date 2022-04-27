@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Test script for the sole purpose of testing the camera
+// Code from https://www.youtube.com/watch?v=_EROILoOnT4
 public class MovePlayers : MonoBehaviour
 {
     private Vector3 initialPosition;

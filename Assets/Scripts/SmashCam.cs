@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Code from: https://www.youtube.com/watch?v=_EROILoOnT4
+// Will be used as a base
+// TODO: implement method to scale camera speed to match player speed
 public class SmashCam: MonoBehaviour
 {
 
