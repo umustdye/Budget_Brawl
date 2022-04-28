@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class roundTimer : MonoBehaviour
 {
+    public GameObject roundManager;
+    private roundManager manager;
+
     private float roundTime;
     // change maxTime will actually change the round time
     public float maxTime = 180.0f;
@@ -13,6 +16,7 @@ public class roundTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        manager = roundManager.GetComponent<roundManager>();
         restart();
     }
 
@@ -32,6 +36,7 @@ public class roundTimer : MonoBehaviour
         }
         else{
             // round ends, no logic yet
+            manager.setRoundEnd();
             roundTime = 0;
             isRunning = false;
         }
