@@ -36,7 +36,7 @@ public class roundTimer : MonoBehaviour
         }
         else{
             // round ends, no logic yet
-            manager.setRoundEnd();
+            manager.setRoundEnd(true);
             roundTime = 0;
             isRunning = false;
         }
