@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class roundTimer : MonoBehaviour
 {
+    // set it to round manager gameobject
     public GameObject roundManager;
     private roundManager manager;
 
     private float roundTime;
     // change maxTime will actually change the round time
     public float maxTime = 180.0f;
+    // set it to textUI timertext
     public Text timerText;
     private bool isRunning;
     // Start is called before the first frame update

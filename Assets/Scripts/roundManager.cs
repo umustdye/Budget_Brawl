@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class roundManager : MonoBehaviour
 {
+    // set it to round manager gameobject
     public GameObject roundTime;
+    // automatically set it to its child
     public Text timeoverText;
 
     private roundTimer timer;
