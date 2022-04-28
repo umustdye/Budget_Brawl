@@ -51,6 +51,10 @@ public class roundTimer : MonoBehaviour
         return (int)(roundTime % 60);
     }
 
+    public bool isTimerRunning(){
+        return isRunning;
+    }
+
     public void displayTime(){
         timerText.text = string.Format("{0:00}:{1:00}", getMinutes(), getSeconds());
     }
