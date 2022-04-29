@@ -15,7 +15,7 @@ public class roundManager : MonoBehaviour
     private bool isAnimationRunning;
     private bool transitionToNextRound;
     private bool waitForTransition;
-    private int roundNum = 3;
+    public int roundNum = 3;
 
     private float animationSpeed = 0.3f;
     private string end = "TIME OVER";

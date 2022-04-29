@@ -35,6 +35,16 @@ public class roundTimer : MonoBehaviour
     void decrementTimer(){
         if(roundTime > 0){
             roundTime -= Time.deltaTime;
+            // add effects when roundTime has 10/3 seconds left
+            if((int)roundTime <= 10){
+                if((int)roundTime % 2 == 0){
+                    // Debug.Log("red");
+                    timerText.color = Color.red;
+                }
+                else{
+                    timerText.color = Color.black;
+                }
+            }
         }
         else{
             // round ends, no logic yet
@@ -47,6 +57,7 @@ public class roundTimer : MonoBehaviour
 
     public void restart(){
         isRunning = true;
+        timerText.color = Color.black;
         roundTime = maxTime;
     }
 
