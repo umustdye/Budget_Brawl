@@ -122,6 +122,8 @@ public class roundManager : MonoBehaviour
     void setWaitTime(float seconds){
         waitEnd = false;
         maxSeconds = seconds;
+        // through player manager, disable all inputs of players while waiting
+        // maybe play lose animations for characters and win animation for character with the highest number of lives
     }
     // run until desgnated time is reached, when timer runs out assert waitEnd to signal
     void waitTime(){
