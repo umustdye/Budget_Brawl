@@ -7,6 +7,7 @@ public class CombatScript : MonoBehaviour
     // Components
     private GameInputScript input;
     private PlayerController controller;
+    public AudioSource fightingAudioPlayer;
 
     // Fighting
     [Header("Fighting")]
@@ -18,11 +19,60 @@ public class CombatScript : MonoBehaviour
     private float punch_delta = 0;
     private float kick_delta = 0;
 
+    //Fighting Sounds
+    [Header("FightingSounds")]
+    public AudioClip Blocking_Sound;
+    public AudioClip Punch_Impact_Sound;
+    public AudioClip Punch_Whoosh_Sound;
+    public AudioClip Kick_Whoosh_Sound;
+    public AudioClip Kick_Impact_Sound;
+    public AudioClip Jump_Whoosh_Sound;
+
+
+    public void play_Blocking_Sound()
+    {
+        fightingAudioPlayer.clip = Blocking_Sound;
+        fightingAudioPlayer.Play();
+    }
+
+    public void play_Punch_Impact_Sound() {
+        fightingAudioPlayer.clip = Punch_Impact_Sound;
+        fightingAudioPlayer.Play();
+    }
+
+    public void play_Punch_Whoosh_Sound()
+    {
+        fightingAudioPlayer.clip = Punch_Whoosh_Sound;
+        fightingAudioPlayer.Play();
+    }
+
+    public void play_Kick_Whoosh_Sound()
+    {
+        fightingAudioPlayer.clip = Kick_Whoosh_Sound;
+        fightingAudioPlayer.Play();
+    }
+
+    public void play_Kick_Impact_Sound()
+    {
+        fightingAudioPlayer.clip = Kick_Impact_Sound;
+        fightingAudioPlayer.Play();
+    }
+
+
+    public void play_Jump_Whoosh_Sound()
+    {
+        fightingAudioPlayer.clip = Jump_Whoosh_Sound;
+        fightingAudioPlayer.Play();
+    }
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         input = GetComponent<GameInputScript>();
         controller = GetComponent<PlayerController>();
+        fightingAudioPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
