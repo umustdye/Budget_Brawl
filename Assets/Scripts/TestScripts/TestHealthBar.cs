@@ -8,11 +8,13 @@ public class TestHealthBar : MonoBehaviour
     public int maxHP = 10500;
     public int currentHP;
 
-    public HealthBar healthBar;
+    public HealthBar healthBarLeft;
+    public HealthBar healthBarRight;
     void Start()
     {
         currentHP = maxHP;
-        healthBar.SetMaxHealth(maxHP);
+        healthBarLeft.SetMaxHealth(maxHP);
+        healthBarRight.SetMaxHealth(maxHP);
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class TestHealthBar : MonoBehaviour
     private void ApplyDamage(int damage)
     {
         currentHP -= damage;
-        healthBar.SetHealth(currentHP);
+        healthBarLeft.SetHealth(currentHP);
+        healthBarRight.SetHealth(currentHP);
     }
 }
