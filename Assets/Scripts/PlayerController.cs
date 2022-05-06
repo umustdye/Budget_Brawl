@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
         if(input.jump)
         {
-            if(jump_current < jump_max)
+            if(jump_current < jump_max && !(combat.is_punching || combat.is_kicking))
             {
                 ++jump_current;
                 rigid_body.velocity = new Vector3(rigid_body.velocity.x, 0, 0); // Vertical velocity zero for full height jump in air
