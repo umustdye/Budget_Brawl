@@ -965,7 +965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 155607961055278722, guid: 773040749479262408cc5852a69871b5, type: 3}
       propertyPath: maxTime
-      value: 10
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 155607961838646832, guid: 773040749479262408cc5852a69871b5, type: 3}
       propertyPath: m_LocalScale.x
