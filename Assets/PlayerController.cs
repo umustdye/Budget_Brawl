@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     // Components
     private GameInputScript input;
     private Rigidbody rigid_body;
+    private CombatScript combat;
 
     // Player Movement
     [Header("Movement")]
@@ -31,7 +32,7 @@ public class PlayerController : MonoBehaviour
     public float fall_max_time = 1.0f;
     private float fall_current_time = 0f;
 
-    // Ground collision
+    // Ground Collision
     [Header("Ground Collision")]
     public float ground_radius = 0.5f;
     public float ground_offset = -0.51f;
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         input = GetComponent<GameInputScript>();
         rigid_body = GetComponent<Rigidbody>();
+        combat = GetComponent<CombatScript>();
         ground_layers = LayerMask.GetMask("Ground");
     }
 
@@ -117,13 +119,20 @@ public class PlayerController : MonoBehaviour
     void UpdateMovement()
     {
         // Set movement bools
-        is_idle = is_touching_ground && input.player_direction == 0;
-        is_walking = is_touching_ground && input.player_direction != 0 && !input.sprint;
-        is_sprinting = is_touching_ground && input.player_direction != 0 && input.sprint;
+        is_idle = is_touching_ground && input.player_direction == 0 && !combat.is_blocking;
+        is_walking = is_touching_ground && input.player_direction != 0 && !input.sprint && !combat.is_blocking;
+        is_sprinting = is_touching_ground && input.player_direction != 0 && input.sprint && !combat.is_blocking;
 
         // Update velocity
-        float target_speed = input.sprint ? sprint_speed : walk_speed;
-        horizontal_velocity_delta = input.player_direction * target_speed - rigid_body.velocity.x;
+        if(combat.is_blocking)
+        {
+            horizontal_velocity_delta = -rigid_body.velocity.x; // Stop player movement when blocking
+        }
+        else
+        {
+            float target_speed = input.sprint ? sprint_speed : walk_speed;
+            horizontal_velocity_delta = input.player_direction * target_speed - rigid_body.velocity.x;
+        }
     }
 
     void ApplyRotation()

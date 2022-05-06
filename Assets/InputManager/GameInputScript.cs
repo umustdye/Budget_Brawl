@@ -13,9 +13,9 @@ public class GameInputScript : MonoBehaviour
 
     // Fighting
     [Header("Fighting")]
-    public bool is_punching = false;
-    public bool is_kicking = false;
-    public bool is_blocking = false;
+    public bool punch = false;
+    public bool kick = false;
+    public bool block = false;
 
     // Input Action Message Handlers
     void OnDirection(InputValue val)
@@ -38,19 +38,19 @@ public class GameInputScript : MonoBehaviour
 
     void OnPunch(InputValue val)
     {
-        is_punching = val.isPressed;
-        Debug.Log("punch: " + is_punching);
+        punch = val.isPressed;
+        Debug.Log("punch: " + punch);
     }
 
     void OnKick(InputValue val)
     {
-        is_kicking = val.isPressed;
-        Debug.Log("kick: " + is_kicking);
+        kick = val.isPressed;
+        Debug.Log("kick: " + kick);
     }
 
     void OnBlock(InputValue val)
     {
-        is_blocking = val.Get<float>() != 0;
-        Debug.Log("block: " + is_blocking);
+        block = val.Get<float>() != 0;
+        Debug.Log("block: " + block);
     }
 }

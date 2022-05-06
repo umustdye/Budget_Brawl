@@ -9,8 +9,8 @@ public class Player_Movement : MonoBehaviour
     private Animator playerAnimation;
     //check input bools
     private PlayerController playerController;
-
-    private GameInputScript input;
+    //check combat/attack bools
+    private CombatScript attack;
     [SerializeField] private float _inactiveTimerMax = 6; //six seconds
     float time = 0.0f;
     float velocity = 0.0f;
@@ -21,7 +21,7 @@ public class Player_Movement : MonoBehaviour
     {
         playerAnimation = GetComponent<Animator>();
         playerController = GetComponent<PlayerController>();
-        input = GetComponent<GameInputScript>();
+        attack = GetComponent<CombatScript>();
         playerAnimation.SetBool("isWalking", playerController.is_walking);
         playerAnimation.SetBool("isSprinting", playerController.is_sprinting);
         playerAnimation.SetBool("isIdle", playerController.is_idle);
@@ -30,9 +30,9 @@ public class Player_Movement : MonoBehaviour
         playerAnimation.SetBool("jumpGround", playerController.is_touching_ground);
         playerAnimation.SetFloat("speed", velocity);
         playerAnimation.SetFloat("inactiveTimer", time);
-        playerAnimation.SetBool("isBlocking", input.is_blocking);
-        playerAnimation.SetBool("isPunching", input.is_punching);
-        playerAnimation.SetBool("isKicking", input.is_kicking); 
+        playerAnimation.SetBool("isBlocking", attack.is_blocking);
+        playerAnimation.SetBool("isPunching", attack.is_punching);
+        playerAnimation.SetBool("isKicking", attack.is_kicking); 
     }
 
 
@@ -108,12 +108,12 @@ public class Player_Movement : MonoBehaviour
 
     void Attack()
     {
-        playerAnimation.SetBool("isBlocking", input.is_blocking);
-        playerAnimation.SetBool("isPunching", input.is_punching);
-        playerAnimation.SetBool("isKicking", input.is_kicking); 
-        Debug.Log("Block: " + input.is_blocking);
-        Debug.Log("Punch: " + input.is_punching);
-        Debug.Log("Kick: " + input.is_kicking);
+        playerAnimation.SetBool("isBlocking", attack.is_blocking);
+        playerAnimation.SetBool("isPunching", attack.is_punching);
+        playerAnimation.SetBool("isKicking", attack.is_kicking); 
+        Debug.Log("Block: " + attack.is_blocking);
+        Debug.Log("Punch: " + attack.is_punching);
+        Debug.Log("Kick: " + attack.is_kicking);
     }
 
     void Update()
