@@ -22,20 +22,17 @@ public class SoundEffects : MonoBehaviour
     public AudioClip Jump_Down_Sound;
     public AudioClip Jump_Whoosh_Sound;
 
-    private bool just_landed;
-
 
     void Start()
     {
         playerController = GetComponent<PlayerController>();
         characterAudioPlayer = GetComponent<AudioSource>();
-        just_landed = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void play_Blocking_Sound()

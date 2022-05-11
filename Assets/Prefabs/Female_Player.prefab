@@ -2538,6 +2538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f67253c2aa9424d9f517e2eb1b5cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 9079016264875487750}
   characterAudioPlayer: {fileID: 7279413962254325220}
   Blocking_Sound: {fileID: 8300000, guid: 3fd639473fc13be42b07df2755be05ab, type: 3}
   Punch_Impact_Sound: {fileID: 8300000, guid: 4f8fbafe2b8651942bdbc006e659b696, type: 3}
