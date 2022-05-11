@@ -17,7 +17,7 @@ public class ItemInteraction : MonoBehaviour
         
     }
 
-    void OnCollisionStay(Collision collide)
+    void OnCollisionEnter(Collision collide)
     {
         Debug.Log("I hit the GameObject : " + collide.gameObject.name);
     }
