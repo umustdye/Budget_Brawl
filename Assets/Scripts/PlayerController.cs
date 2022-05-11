@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 center = new Vector3(transform.position.x, transform.position.y + ground_offset, transform.position.z);
         is_touching_ground = Physics.CheckSphere(center, ground_radius, ground_layers, QueryTriggerInteraction.Ignore);
-        Debug.Log("is_touching_ground: " + is_touching_ground);
+        // Debug.Log("is_touching_ground: " + is_touching_ground);
     }
 
     void FallingCheck()

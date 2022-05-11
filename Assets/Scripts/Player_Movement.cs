@@ -121,9 +121,9 @@ public class Player_Movement : MonoBehaviour
         playerAnimation.SetBool("isBlocking", attack.is_blocking);
         playerAnimation.SetBool("isPunching", attack.is_punching);
         playerAnimation.SetBool("isKicking", attack.is_kicking); 
-        Debug.Log("Block: " + attack.is_blocking);
-        Debug.Log("Punch: " + attack.is_punching);
-        Debug.Log("Kick: " + attack.is_kicking);
+        // Debug.Log("Block: " + attack.is_blocking);
+        // Debug.Log("Punch: " + attack.is_punching);
+        // Debug.Log("Kick: " + attack.is_kicking);
     }
 
     void Update()
