@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Player_Movement : MonoBehaviour
+public class Animations : MonoBehaviour
 {
     //animation object
     private Animator playerAnimation;
