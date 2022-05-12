@@ -139,9 +139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87e1a4fb3ea6ba4b9aaaadbd8071df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  halfXBounds: 20
-  halfYBounds: 15
-  halfZBounds: 15
+  halfXBounds: 10
+  halfYBounds: 5
+  halfZBounds: 1
   cameraBound:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
