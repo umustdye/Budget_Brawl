@@ -7,6 +7,12 @@ public class roundManager : MonoBehaviour
 {
     // set it to round manager gameobject
     public GameObject roundTime;
+    public GameObject healthSpawner;
+    public GameObject specialSpawner;
+
+    private ItemSpawner health;
+    private ItemSpawner special;
+
     // automatically set it to its child
     public Text timeoverText;
 
@@ -25,6 +31,9 @@ public class roundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        health = healthSpawner.GetComponent<ItemSpawner>();
+        special = specialSpawner.GetComponent<ItemSpawner>();
+
         timer = roundTime.GetComponent<roundTimer>();
         isRoundEnd = false;
         isAnimationRunning = false;
@@ -146,6 +155,13 @@ public class roundManager : MonoBehaviour
         else{
             if(currTimer < 4){
                 timeoverText.text = placeholder;
+                // TODO: make sure to reset everything else before the manager starts next round
+                health.reset();
+                health.emptyChild();
+                special.reset();
+                special.emptyChild();
+
+                timer.reset();
             }
             else if(4 <= currTimer && currTimer < 6){
                 timeoverText.text = "READY!";

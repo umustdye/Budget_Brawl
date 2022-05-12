@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class ItemInteraction : MonoBehaviour
 {
-    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-        Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>(), false);
+        
     }
 
     // Update is called once per frame
@@ -19,6 +18,17 @@ public class ItemInteraction : MonoBehaviour
 
     void OnCollisionEnter(Collision collide)
     {
-        Debug.Log("I hit the GameObject : " + collide.gameObject.name);
+        // when item collides with player
+        if(collide.gameObject.tag == "Player"){
+            // add interaction with health or special move
+            Token token = gameObject.GetComponent<Token>();
+            token.interact(collide.gameObject);
+
+            // in case of changing mechanism for picking up item
+            // Physics.IgnoreCollision(collide.gameObject.GetComponent<Collider>(), GetComponent<Collider>(), true);
+
+            // on collision item should be dispensed from ItemSpanwer.childItems and disappear
+            Destroy(gameObject);
+        }
     }
 }
