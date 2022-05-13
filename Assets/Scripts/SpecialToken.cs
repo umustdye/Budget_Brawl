@@ -18,5 +18,8 @@ public class SpecialToken : Token
 
     public override void interact(GameObject player){
         // Debug.Log("Special token interact");
+        specialManager particles = player.GetComponent<specialManager>();
+        particles.playParticles();
+        particles.chargeSpecial();
     }
 }

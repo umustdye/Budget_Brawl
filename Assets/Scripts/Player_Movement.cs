@@ -11,7 +11,14 @@ public class Player_Movement : MonoBehaviour
     private PlayerController playerController;
     //check combat/attack bools
     private CombatScript attack;
+    //Audio Source
+    public AudioSource movementAudioPlayer;
 
+
+    //Movement Sounds
+    [Header("FightingSounds")]
+    public AudioClip Jump_Up_Sound;
+    public AudioClip Jump_Down_Sound;
 
     [SerializeField] private float _inactiveTimerMax = 6; //six seconds
     float time = 0.0f;
@@ -24,6 +31,7 @@ public class Player_Movement : MonoBehaviour
         playerAnimation = GetComponent<Animator>();
         playerController = GetComponent<PlayerController>();
         attack = GetComponent<CombatScript>();
+        movementAudioPlayer = GetComponent<AudioSource>();
         playerAnimation.SetBool("isWalking", playerController.is_walking);
         playerAnimation.SetBool("isSprinting", playerController.is_sprinting);
         playerAnimation.SetBool("isIdle", playerController.is_idle);
@@ -125,5 +133,16 @@ public class Player_Movement : MonoBehaviour
         Attack();
     }
 
+    public void play_Jumping_Up_Sound()
+    {
+        movementAudioPlayer.clip = Jump_Up_Sound;
+        movementAudioPlayer.Play();
+    }
 
+    public void play_Jumping_Down_Sound()
+    {
+        
+        movementAudioPlayer.clip = Jump_Down_Sound;
+        movementAudioPlayer.Play();
+    }
 }

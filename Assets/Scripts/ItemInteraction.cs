@@ -19,13 +19,17 @@ public class ItemInteraction : MonoBehaviour
     void OnCollisionEnter(Collision collide)
     {
         // when item collides with player
+        // make sure for players to be taggered as "Player"
         if(collide.gameObject.tag == "Player"){
             // add interaction with health or special move
             Token token = gameObject.GetComponent<Token>();
             token.interact(collide.gameObject);
 
             // in case of changing mechanism for picking up item
-            // Physics.IgnoreCollision(collide.gameObject.GetComponent<Collider>(), GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(collide.gameObject.GetComponent<Collider>(), GetComponent<Collider>(), true);
+            // when player touches cube, player slightly moves in Z-axis
+            // to counteract distortion, physically foced player to stay at one Z-position
+            collide.gameObject.transform.position = new Vector3(collide.gameObject.transform.position.x, collide.gameObject.transform.position.y, -3.275f);
 
             // on collision item should be dispensed from ItemSpanwer.childItems and disappear
             Destroy(gameObject);

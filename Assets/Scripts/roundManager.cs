@@ -21,6 +21,7 @@ public class roundManager : MonoBehaviour
     private bool isAnimationRunning;
     private bool transitionToNextRound;
     private bool waitForTransition;
+    private bool isRoundStart;
     public int roundNum = 3;
 
     private float animationSpeed = 0.3f;
@@ -35,6 +36,7 @@ public class roundManager : MonoBehaviour
         special = specialSpawner.GetComponent<ItemSpawner>();
 
         timer = roundTime.GetComponent<roundTimer>();
+        isRoundStart = true;
         isRoundEnd = false;
         isAnimationRunning = false;
         transitionToNextRound = false;
@@ -43,6 +45,10 @@ public class roundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isRoundStart){
+            waitTransition(9);
+        }
+
         if(isRoundEnd){
             roundEnd();
         }
@@ -52,7 +58,7 @@ public class roundManager : MonoBehaviour
         }
 
         if(waitForTransition){
-            waitTransition();
+            waitTransition(9);
         }
 
         if(transitionToNextRound){
@@ -145,12 +151,13 @@ public class roundManager : MonoBehaviour
         }
     }
     // set wait time of 9 seconds, wait; then, transition to the next round
-    void waitTransition(){
-        setWaitTime(9);
+    void waitTransition(int waitSeconds){
+        setWaitTime(waitSeconds);
         waitTime();
         if(waitEnd){
             transitionToNextRound = true;
             waitEnd = false;
+            isRoundStart = false;
         }
         else{
             if(currTimer < 4){
@@ -160,10 +167,9 @@ public class roundManager : MonoBehaviour
                 health.emptyChild();
                 special.reset();
                 special.emptyChild();
-
-                timer.reset();
             }
             else if(4 <= currTimer && currTimer < 6){
+                timer.reset();
                 timeoverText.text = "READY!";
             }
             else if(6 <= currTimer && currTimer < 8){
