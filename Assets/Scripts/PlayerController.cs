@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private GameInputScript input;
     private Rigidbody rigid_body;
     private CombatScript combat;
+    private SoundEffects soundfx;
 
     // Player Movement
     [Header("Movement")]
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public float jump_height = 3.0f;
     public int jump_max = 3;
     public bool is_jumping = false;
+    public bool waiting_to_land = false;
     private int jump_current = 0;
     private float vertical_velocity_delta = 0;
 
@@ -45,6 +47,7 @@ public class PlayerController : MonoBehaviour
         input = GetComponent<GameInputScript>();
         rigid_body = GetComponent<Rigidbody>();
         combat = GetComponent<CombatScript>();
+        soundfx = GetComponent<SoundEffects>();
         ground_layers = LayerMask.GetMask("Ground");
     }
 
@@ -92,21 +95,27 @@ public class PlayerController : MonoBehaviour
     {
         if(is_touching_ground)
         {
+            if (waiting_to_land) { 
+                waiting_to_land = false;
+                soundfx.play_Jumping_Down_Sound();
+            }
             is_jumping = false;
             jump_current = 0;
         }
 
         if(input.jump)
         {
-            if(jump_current < jump_max)
-            {
+            if(jump_current < jump_max && !(combat.is_punching || combat.is_kicking))
+            {   
                 ++jump_current;
+                if (jump_current == 1) { soundfx.play_Jumping_Up_Sound(); }
+                else { soundfx.play_Jump_Whoosh_Sound(); }
                 rigid_body.velocity = new Vector3(rigid_body.velocity.x, 0, 0); // Vertical velocity zero for full height jump in air
                 vertical_velocity_delta = Mathf.Sqrt(jump_height * -2f * Physics.gravity.y);
-
                 is_jumping = true;
                 is_falling = false;
                 fall_current_time = 0;
+                waiting_to_land = true;
             }
             input.jump = false;
         }

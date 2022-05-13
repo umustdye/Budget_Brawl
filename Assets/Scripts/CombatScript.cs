@@ -14,8 +14,8 @@ public class CombatScript : MonoBehaviour
     public bool is_blocking = false;
     public bool is_punching = false;
     public bool is_kicking = false;
-    public float punch_time = 1.733f;
-    public float kick_time = 1.3f;
+    public float punch_time = 0.5f;
+    public float kick_time = 0.8f;
     private float punch_delta = 0;
     private float kick_delta = 0;
 

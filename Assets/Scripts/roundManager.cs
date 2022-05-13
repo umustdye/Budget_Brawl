@@ -167,7 +167,6 @@ public class roundManager : MonoBehaviour
                 health.emptyChild();
                 special.reset();
                 special.emptyChild();
-
             }
             else if(4 <= currTimer && currTimer < 6){
                 timer.reset();
