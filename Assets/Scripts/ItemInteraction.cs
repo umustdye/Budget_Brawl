@@ -19,6 +19,7 @@ public class ItemInteraction : MonoBehaviour
     void OnCollisionEnter(Collision collide)
     {
         // when item collides with player
+        // make sure for players to be taggered as "Player"
         if(collide.gameObject.tag == "Player"){
             // add interaction with health or special move
             Token token = gameObject.GetComponent<Token>();
