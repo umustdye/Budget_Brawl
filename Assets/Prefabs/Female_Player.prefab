@@ -2374,6 +2374,7 @@ MonoBehaviour:
   jump_height: 3
   jump_max: 3
   is_jumping: 0
+  waiting_to_land: 0
   is_falling: 0
   fall_max_time: 1
   ground_radius: 0.5
@@ -2543,7 +2544,7 @@ MonoBehaviour:
   Blocking_Sound: {fileID: 8300000, guid: 3fd639473fc13be42b07df2755be05ab, type: 3}
   Punch_Impact_Sound: {fileID: 8300000, guid: 4f8fbafe2b8651942bdbc006e659b696, type: 3}
   Punch_Whoosh_Sound: {fileID: 8300000, guid: f0d9d714e04c7604388cd8e938c6f504, type: 3}
-  Kick_Whoosh_Sound: {fileID: 8300000, guid: 6bbbb367e579eed45bad8799fc603898, type: 3}
+  Kick_Whoosh_Sound: {fileID: 8300000, guid: a8bc148e677da5d49a95bfe2cba03143, type: 3}
   Kick_Impact_Sound: {fileID: 8300000, guid: 2f68415471fa4354eb9d9704f45ac951, type: 3}
   Jump_Up_Sound: {fileID: 8300000, guid: ba7e1a28f3073484a83be000fb673418, type: 3}
   Jump_Down_Sound: {fileID: 8300000, guid: aac7c2e920f305a4b9125e6399596c82, type: 3}
