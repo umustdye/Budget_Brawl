@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerGameInfo : MonoBehaviour
 {
-    //TODO: restructure for more than 2 players
-    //TODO: make max health character specific rather than hard coded
+    //TODO: restructure for more than 2 players --> use List or array and add as much health bar as we want
+    //TODO: make max health character specific rather than hard coded --> attribute can be stored in the player prefabs?
     //TODO: add integration for player lives/stocks
     //TODO: potentially add integration for roundtime/ number of rounds
     //TODO: link with blast/death animation
@@ -48,10 +48,6 @@ public class PlayerGameInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        player1HealthBar.SetHealth(player1Health);
-        player2HealthBar.SetHealth(player2Health);
-
         if (player1Health <= 0)
         {
             player1Dead = true;
