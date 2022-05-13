@@ -21,6 +21,4 @@ public class BlastZoneBounds : MonoBehaviour
         bounds.Encapsulate(new Vector3(position.x + halfXBounds, position.y + halfYBounds, position.z + halfZBounds));
         blastZoneBounds = bounds;
     }
-
-
 }
