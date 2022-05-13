@@ -74,10 +74,7 @@ public class roundManager : MonoBehaviour
         // transition animations? another waiting time, dispose "TIME OVER"
         // respawn and position all characters
         // restart the timer
-        placeholder = "";
         waitForTransition = false;
-
-        timer.restart();
         transitionToNextRound = false;
     }
 
@@ -177,6 +174,7 @@ public class roundManager : MonoBehaviour
             }
             else{
                 timeoverText.text = "";
+                timer.restart();
             }
         }
     }
