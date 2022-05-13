@@ -102,7 +102,7 @@ MonoBehaviour:
   positionUpdateSpeed: 5
   angleUpdateSpeed: 7
   depthUpdateSpeed: 5
-  maxAngle: 7
+  maxAngle: 11
   minAngle: 3
-  maxDepth: -5
-  minDepth: -10
+  maxDepth: -10
+  minDepth: -22
