@@ -12,6 +12,10 @@ public class linkPlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // temporarily put stopping particle code here
+        // maybe another controller for particles?
+        GetComponent<ParticleSystem>().Stop();
+
         currentHP = maxHP;
         healthBar.SetMaxHealth(maxHP);
     }
@@ -19,12 +23,13 @@ public class linkPlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void ApplyDamage(int damage)
     {
         currentHP -= damage;
+        // just in case of underflow
         if(currentHP < 0){
             currentHP = 0;
         }
@@ -34,6 +39,7 @@ public class linkPlayerHealth : MonoBehaviour
     public void ApplyHealing(int hpRestored)
     {
         currentHP += hpRestored;
+        // just in case of overflow
         if(currentHP > maxHP){
             currentHP = maxHP;
         }
