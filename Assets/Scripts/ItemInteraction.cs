@@ -26,7 +26,10 @@ public class ItemInteraction : MonoBehaviour
             token.interact(collide.gameObject);
 
             // in case of changing mechanism for picking up item
-            // Physics.IgnoreCollision(collide.gameObject.GetComponent<Collider>(), GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(collide.gameObject.GetComponent<Collider>(), GetComponent<Collider>(), true);
+            // when player touches cube, player slightly moves in Z-axis
+            // to counteract distortion, physically foced player to stay at one Z-position
+            collide.gameObject.transform.position = new Vector3(collide.gameObject.transform.position.x, collide.gameObject.transform.position.y, -3.275f);
 
             // on collision item should be dispensed from ItemSpanwer.childItems and disappear
             Destroy(gameObject);

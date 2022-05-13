@@ -63,6 +63,7 @@ public class roundTimer : MonoBehaviour
     public void reset(){
         timerText.color = Color.black;
         roundTime = maxTime;
+        displayTime();
     }
 
     int getMinutes(){

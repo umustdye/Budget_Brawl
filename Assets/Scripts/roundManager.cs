@@ -161,9 +161,9 @@ public class roundManager : MonoBehaviour
                 special.reset();
                 special.emptyChild();
 
-                timer.reset();
             }
             else if(4 <= currTimer && currTimer < 6){
+                timer.reset();
                 timeoverText.text = "READY!";
             }
             else if(6 <= currTimer && currTimer < 8){
