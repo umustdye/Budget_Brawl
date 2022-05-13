@@ -8,6 +8,7 @@ public class BlastPlayer : MonoBehaviour
     public SmashCam playerList;
 
     private PlayerController playerController;
+    private PlayerGameInfo playerGameInfo;
 
     // Start is called before the first frame update
     void Start()
@@ -39,18 +40,31 @@ public class BlastPlayer : MonoBehaviour
 
     private void KillPlayer(GameObject player)
     {
-        // Freezes player object in place at position of death
         Rigidbody playerBody = player.GetComponent(typeof(Rigidbody)) as Rigidbody;
+        playerGameInfo = GameObject.FindObjectOfType<PlayerGameInfo>();
+        playerController = player.GetComponent(typeof(PlayerController)) as PlayerController;
+
+        // Freezes player object in place at position of death
         playerBody.constraints = RigidbodyConstraints.FreezePosition;
 
         // Grabs player position at time of death
         Vector3 playerPosition = player.transform.position;
         // Prevents the player from continuing to provide input to their character
-        playerController = player.GetComponent(typeof(PlayerController)) as PlayerController;
         playerController.enabled = false;
 
         // "Deletes" the player without removing it from the Scene
         player.transform.localScale = new Vector3(0, 0, 0);
+
+        switch (player.tag)
+        {
+            case "Player1":
+                playerGameInfo.player1Health = 0;
+                break;
+
+            case "Player2":
+                playerGameInfo.player2Health = 0;
+                break;
+        }
 
     }
 
