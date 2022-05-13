@@ -9,13 +9,10 @@ public class linkPlayerHealth : MonoBehaviour
 
     // health bar may be dynamically assigned when the game starts
     public HealthBar healthBar;
+
     // Start is called before the first frame update
     void Start()
     {
-        // temporarily put stopping particle code here
-        // maybe another controller for particles?
-        GetComponent<ParticleSystem>().Stop();
-
         currentHP = maxHP;
         healthBar.SetMaxHealth(maxHP);
     }
@@ -23,7 +20,7 @@ public class linkPlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+    
     }
 
     public void ApplyDamage(int damage)
