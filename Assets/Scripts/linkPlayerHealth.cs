@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class linkPlayerHealth : MonoBehaviour
 {
-    public int maxHP = 10500;
+    public int maxHP = 10000;
     public int currentHP;
 
     // health bar may be dynamically assigned when the game starts
@@ -21,6 +21,11 @@ public class linkPlayerHealth : MonoBehaviour
     void Update()
     {
     
+    }
+
+    // upon respawn or beginning of the game, refill player's health to max
+    public void refillFull(){
+        healthBar.SetHealth(maxHP);
     }
 
     public void ApplyDamage(int damage)
@@ -41,5 +46,9 @@ public class linkPlayerHealth : MonoBehaviour
             currentHP = maxHP;
         }
         healthBar.SetHealth(currentHP);
+    }
+
+    public int getHP(){
+        return currentHP;
     }
 }

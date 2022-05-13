@@ -10,10 +10,11 @@ public class PlayerGameInfo : MonoBehaviour
     //TODO: potentially add integration for roundtime/ number of rounds
     //TODO: link with blast/death animation
 
-    public HealthBar player1HealthBar;
-    public HealthBar player2HealthBar;
-    public int player1Health = 10000;
-    public int player2Health = 10000;
+    public GameObject player1;
+    public GameObject player2;
+
+    private linkPlayerHealth p1Health;
+    private linkPlayerHealth p2Health;
 
     public int player1Lives = 3;
     public int player2Lives = 3;
@@ -31,10 +32,14 @@ public class PlayerGameInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player1Health = 10000;
-        player2Health = 10000;
-        player1HealthBar.SetMaxHealth(player1Health);
-        player2HealthBar.SetMaxHealth(player2Health);
+        // after implementing map select and transition between round and menu
+        // we have to dynamically add players to generalize certain logics we have right now
+        // can easily be shortend by having a designated player list
+        p1Health = player1.GetComponent<linkPlayerHealth>();
+        p2Health = player2.GetComponent<linkPlayerHealth>();
+
+        p1Health.refillFull();
+        p2Health.refillFull();
 
         player1Lives = 3;
         player2Lives = 3;
@@ -48,7 +53,7 @@ public class PlayerGameInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player1Health <= 0)
+        if (p1Health.getHP() <= 0)
         {
             player1Dead = true;
 
@@ -61,7 +66,7 @@ public class PlayerGameInfo : MonoBehaviour
                 //Respawn player 1
             }
         }
-        else if (player2Health <= 0)
+        else if (p2Health.getHP() <= 0)
         {
             player2Dead = true;
 
