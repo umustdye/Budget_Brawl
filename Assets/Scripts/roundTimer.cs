@@ -57,6 +57,9 @@ public class roundTimer : MonoBehaviour
 
     public void restart(){
         isRunning = true;
+    }
+
+    public void reset(){
         timerText.color = Color.black;
         roundTime = maxTime;
     }

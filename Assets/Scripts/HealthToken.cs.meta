@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-guid: d4c7d954a446b5b47bc2b63c6c9ec428
+guid: 6154ea5438ff9024c8759c4e3afff64c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - movementAudioPlayer: {instanceID: 0}
-  - Jump_Up_Sound: {instanceID: 0}
-  - Jump_Down_Sound: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
