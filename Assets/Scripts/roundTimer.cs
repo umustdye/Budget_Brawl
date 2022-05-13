@@ -19,6 +19,7 @@ public class roundTimer : MonoBehaviour
     void Start()
     {
         manager = roundManager.GetComponent<roundManager>();
+        reset();
         restart();
     }
 

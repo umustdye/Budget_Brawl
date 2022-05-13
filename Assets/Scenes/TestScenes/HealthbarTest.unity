@@ -4981,6 +4981,18 @@ MonoBehaviour:
   maxHP: 10500
   currentHP: 0
   healthBar: {fileID: 1561690171}
+--- !u!114 &469083989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469083975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c59e59a63c41d75458538261847e03ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &489058732
 GameObject:
   m_ObjectHideFlags: 0
@@ -5938,6 +5950,30 @@ PrefabInstance:
     - target: {fileID: 155607960451680775, guid: 773040749479262408cc5852a69871b5, type: 3}
       propertyPath: m_Name
       value: RoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 155607960733590596, guid: 773040749479262408cc5852a69871b5, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 155607960733590598, guid: 773040749479262408cc5852a69871b5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 155607960733590598, guid: 773040749479262408cc5852a69871b5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 155607960733590598, guid: 773040749479262408cc5852a69871b5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 155607960733590598, guid: 773040749479262408cc5852a69871b5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 155607960733590598, guid: 773040749479262408cc5852a69871b5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 275
       objectReference: {fileID: 0}
     - target: {fileID: 155607961908216206, guid: 773040749479262408cc5852a69871b5, type: 3}
       propertyPath: healthSpawner
