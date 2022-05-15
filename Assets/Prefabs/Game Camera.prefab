@@ -99,6 +99,7 @@ MonoBehaviour:
   cameraBound: {fileID: 0}
   playerList:
   - {fileID: 0}
+  - {fileID: 0}
   positionUpdateSpeed: 5
   angleUpdateSpeed: 7
   depthUpdateSpeed: 5

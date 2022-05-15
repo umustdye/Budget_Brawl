@@ -35,7 +35,7 @@ public class SmashCam: MonoBehaviour
     void Start()
     {
         // Add center of the stage to calculations
-        playerList.Add(cameraBound.gameObject);
+// playerList.Add(cameraBound.gameObject);
     }
 
 
