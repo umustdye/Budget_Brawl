@@ -2249,10 +2249,11 @@ GameObject:
   - component: {fileID: 9079016264875487771}
   - component: {fileID: 7279413962254325220}
   - component: {fileID: 2824048881423560565}
+  - component: {fileID: 8641523116024241972}
   m_Layer: 0
   m_Name: Female_Player
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2264,7 +2265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8160044105240706494}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2058288631436246905}
@@ -2298,7 +2299,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 8160044105240706494}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -2377,8 +2378,8 @@ MonoBehaviour:
   waiting_to_land: 0
   is_falling: 0
   fall_max_time: 1
-  ground_radius: 0.5
-  ground_offset: 0.45
+  ground_radius: 0.28
+  ground_offset: 0.17
   is_touching_ground: 0
   ground_layers:
     serializedVersion: 2
@@ -2549,6 +2550,19 @@ MonoBehaviour:
   Jump_Up_Sound: {fileID: 8300000, guid: ba7e1a28f3073484a83be000fb673418, type: 3}
   Jump_Down_Sound: {fileID: 8300000, guid: aac7c2e920f305a4b9125e6399596c82, type: 3}
   Jump_Whoosh_Sound: {fileID: 8300000, guid: f958282e5fa2e8d4599de2431096cef9, type: 3}
+--- !u!65 &8641523116024241972
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8160044105240706494}
+  m_Material: {fileID: 13400000, guid: 4e89d93a36721d245abff0d6a7500e05, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 1.66, z: 0.6}
+  m_Center: {x: 0, y: 0.82, z: 0}
 --- !u!1 &8284975885569072869
 GameObject:
   m_ObjectHideFlags: 0
