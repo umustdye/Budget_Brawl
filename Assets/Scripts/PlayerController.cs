@@ -75,21 +75,28 @@ public class PlayerController : MonoBehaviour
 
     void FallingCheck()
     {
-        if(is_touching_ground)
-        {
-            is_falling = false;
-            fall_current_time = 0;
-        }
-        else
-        {
-            fall_current_time += Time.fixedDeltaTime;
-            if(fall_current_time > fall_max_time)
+        fall_current_time += Time.fixedDeltaTime;
+        if (waiting_to_land) {
+            if (is_touching_ground)
             {
-                is_falling = true;
-                is_jumping = false;
+                is_falling = false;
+                fall_current_time = 0;
+            }
+            else {
+                if (fall_current_time > fall_max_time)
+                {
+                    is_falling = true;
+                    is_jumping = false;
+                }
+                else if (Vector3.Dot(GetComponent<Rigidbody>().velocity, Vector3.up) < -0.01f)
+                {
+                    is_falling = true;
+                    is_jumping = false;
+                }
             }
         }
-    }
+        
+}
 
     void UpdateJump()
     {
