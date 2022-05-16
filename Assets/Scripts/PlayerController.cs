@@ -83,16 +83,10 @@ public class PlayerController : MonoBehaviour
                 fall_current_time = 0;
             }
             else {
-                if (fall_current_time > fall_max_time)
-                {
-                    is_falling = true;
-                    is_jumping = false;
-                }
-                else if (Vector3.Dot(GetComponent<Rigidbody>().velocity, Vector3.up) < -0.01f)
-                {
-                    is_falling = true;
-                    is_jumping = false;
-                }
+                 if (fall_current_time > fall_max_time || Vector3.Dot(GetComponent<Rigidbody>().velocity, Vector3.up) < -0.01f) {
+                     is_falling = true;
+                     is_jumping = false;
+                 }
             }
         }
         
