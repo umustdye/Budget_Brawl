@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4569837669056003341}
   - component: {fileID: 4569837669056003342}
+  - component: {fileID: 446185614455010942}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 5291883647902391254, guid: 7f57f8e313de89d49a2210f410bcb937, type: 3}
+  m_PlayerPrefab: {fileID: 8160044105240706494, guid: e19ead425679f5941a46591f55a1c77e, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -75,3 +76,27 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &446185614455010942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4569837669056003343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1924c7c7488c129449fbe75f3f8e5247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1HealthBar: {fileID: 0}
+  player2HealthBar: {fileID: 0}
+  player1Health: 10000
+  player2Health: 10000
+  player1Lives: 3
+  player2Lives: 3
+  roundTime: 180
+  timeOut: 0
+  player1Win: 0
+  player2Win: 0
+  player1Dead: 0
+  player2Dead: 0
