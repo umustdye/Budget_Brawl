@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
         if(input.jump)
         {
-            if(jump_current < jump_max && !(combat.is_punching || combat.is_kicking))
+            if(jump_current < jump_max && !combat.IsAttacking())
             {
                 ++jump_current;
                 rigid_body.velocity = new Vector3(rigid_body.velocity.x, 0, 0); // Vertical velocity zero for full height jump in air
@@ -124,9 +124,9 @@ public class PlayerController : MonoBehaviour
         is_sprinting = is_touching_ground && input.player_direction != 0 && input.sprint && !combat.is_blocking;
 
         // Update velocity
-        if(combat.is_blocking)
+        if(combat.is_blocking || (combat.IsAttacking() && is_touching_ground))
         {
-            horizontal_velocity_delta = -rigid_body.velocity.x; // Stop player movement when blocking
+            horizontal_velocity_delta = -rigid_body.velocity.x; // Stop player movement during combat
         }
         else
         {
@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
 
     void ApplyRotation()
     {
-        if(input.player_direction != 0)
+        if(input.player_direction != 0 && !combat.IsAttacking())
         {
             Quaternion new_rotation = Quaternion.LookRotation(new Vector3(input.player_direction, 0, 0));
             rigid_body.MoveRotation(new_rotation);

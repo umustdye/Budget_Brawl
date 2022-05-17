@@ -16,6 +16,7 @@ public class GameInputScript : MonoBehaviour
     public bool punch = false;
     public bool kick = false;
     public bool block = false;
+    public bool special_attack = false;
 
     // Input Action Message Handlers
     void OnDirection(InputValue val)
@@ -52,5 +53,11 @@ public class GameInputScript : MonoBehaviour
     {
         block = val.Get<float>() != 0;
         Debug.Log("block: " + block);
+    }
+
+    void OnSpecialAttack(InputValue val)
+    {
+        special_attack = val.isPressed;
+        Debug.Log("special attack: " + special_attack);
     }
 }
