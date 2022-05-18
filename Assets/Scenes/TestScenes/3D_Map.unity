@@ -370,6 +370,10 @@ PrefabInstance:
       propertyPath: m_PlayerPrefab
       value: 
       objectReference: {fileID: 8160044105240706494, guid: e19ead425679f5941a46591f55a1c77e, type: 3}
+    - target: {fileID: 4569837669056003342, guid: e13217e6925167645b271cd7eb15e099, type: 3}
+      propertyPath: m_MaxPlayerCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4569837669056003343, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: m_Name
       value: PlayerManager
@@ -830,17 +834,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4658068601300401469, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.43
+      objectReference: {fileID: 0}
     - target: {fileID: 9043702344798511628, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
       propertyPath: halfXBounds
-      value: 25
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9043702344798511628, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
       propertyPath: halfYBounds
-      value: 4
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9043702344798511628, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
       propertyPath: halfZBounds
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
@@ -986,7 +994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
       propertyPath: minDepth
-      value: -15
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
       propertyPath: cameraBound
@@ -1002,6 +1010,90 @@ PrefabInstance:
       objectReference: {fileID: 469083975}
     - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
       propertyPath: playerList.Array.data[1]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[2]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[3]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[4]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[5]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[6]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[7]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[8]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[9]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[10]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[11]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[12]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[13]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[14]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[15]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[16]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[17]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[18]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[19]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[20]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[21]
+      value: 
+      objectReference: {fileID: 478695579}
+    - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
+      propertyPath: playerList.Array.data[22]
       value: 
       objectReference: {fileID: 478695579}
     m_RemovedComponents: []
