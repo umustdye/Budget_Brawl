@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public float jump_height = 3.0f;
     public int jump_max = 3;
     public bool is_jumping = false;
+    public bool waiting_to_land = false;
     private int jump_current = 0;
     private float vertical_velocity_delta = 0;
 
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 center = new Vector3(transform.position.x, transform.position.y + ground_offset, transform.position.z);
         is_touching_ground = Physics.CheckSphere(center, ground_radius, ground_layers, QueryTriggerInteraction.Ignore);
-        Debug.Log("is_touching_ground: " + is_touching_ground);
+        // Debug.Log("is_touching_ground: " + is_touching_ground);
     }
 
     void FallingCheck()
@@ -103,10 +104,10 @@ public class PlayerController : MonoBehaviour
                 ++jump_current;
                 rigid_body.velocity = new Vector3(rigid_body.velocity.x, 0, 0); // Vertical velocity zero for full height jump in air
                 vertical_velocity_delta = Mathf.Sqrt(jump_height * -2f * Physics.gravity.y);
-
                 is_jumping = true;
                 is_falling = false;
                 fall_current_time = 0;
+                waiting_to_land = true;
             }
             input.jump = false;
         }

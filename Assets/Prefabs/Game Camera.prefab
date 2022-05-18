@@ -99,12 +99,10 @@ MonoBehaviour:
   cameraBound: {fileID: 0}
   playerList:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   positionUpdateSpeed: 5
   angleUpdateSpeed: 7
   depthUpdateSpeed: 5
-  maxAngle: 11
+  maxAngle: 7
   minAngle: 3
-  maxDepth: -10
-  minDepth: -22
+  maxDepth: -5
+  minDepth: -10
