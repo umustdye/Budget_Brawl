@@ -11,14 +11,7 @@ public class Animations : MonoBehaviour
     private PlayerController playerController;
     //check combat/attack bools
     private CombatScript attack;
-    //Audio Source
-    public AudioSource movementAudioPlayer;
 
-
-    //Movement Sounds
-    [Header("FightingSounds")]
-    public AudioClip Jump_Up_Sound;
-    public AudioClip Jump_Down_Sound;
 
     [SerializeField] private float _inactiveTimerMax = 6; //six seconds
     float time = 0.0f;
@@ -26,12 +19,19 @@ public class Animations : MonoBehaviour
     public float acceleration = .8f;
     public float deceleration = 1.2f;
 
+    //animation speed 
+    //[SerializeField] private float _animationSpeed = 1f;
+
+    //attack animation lengths
+    const float PUNCH_LENGTH = 1.733f;
+    const float KICK_LENGTH = 1.6f;
+    const float SPECIAL_ATTACK_LENGTH = 3.9f;
+
     void Start()
     {
         playerAnimation = GetComponent<Animator>();
         playerController = GetComponent<PlayerController>();
         attack = GetComponent<CombatScript>();
-        movementAudioPlayer = GetComponent<AudioSource>();
         playerAnimation.SetBool("isWalking", playerController.is_walking);
         playerAnimation.SetBool("isSprinting", playerController.is_sprinting);
         playerAnimation.SetBool("isIdle", playerController.is_idle);
@@ -43,6 +43,7 @@ public class Animations : MonoBehaviour
         playerAnimation.SetBool("isBlocking", attack.is_blocking);
         playerAnimation.SetBool("isPunching", attack.is_punching);
         playerAnimation.SetBool("isKicking", attack.is_kicking); 
+        playerAnimation.SetBool("isSpecialAttack", attack.is_special_attack);
     }
 
 
@@ -120,10 +121,35 @@ public class Animations : MonoBehaviour
     {
         playerAnimation.SetBool("isBlocking", attack.is_blocking);
         playerAnimation.SetBool("isPunching", attack.is_punching);
-        playerAnimation.SetBool("isKicking", attack.is_kicking); 
-        Debug.Log("Block: " + attack.is_blocking);
+        playerAnimation.SetBool("isKicking", attack.is_kicking);
+        playerAnimation.SetBool("isSpecialAttack", attack.is_special_attack); 
+        if(attack.is_special_attack || attack.is_punching || attack.is_kicking) ChangeAttackSpeed();
+        /*Debug.Log("Block: " + attack.is_blocking);
         Debug.Log("Punch: " + attack.is_punching);
         Debug.Log("Kick: " + attack.is_kicking);
+        Debug.Log("Special Attack: " + attack.is_special_attack);*/
+    }
+
+    void ChangeAttackSpeed()
+    {
+        float speedAnimationMultiplier = 1f;
+        if(attack.is_kicking)
+        {
+            speedAnimationMultiplier = KICK_LENGTH/attack.kick_time;
+        }
+
+        else if(attack.is_punching)
+        {
+            speedAnimationMultiplier = PUNCH_LENGTH/attack.punch_time;
+        }
+
+        else if(attack.is_special_attack)
+        {
+            speedAnimationMultiplier = (SPECIAL_ATTACK_LENGTH)/attack.special_attack_time;
+        }
+
+        //Debug.Log("Animation Duration: " + speedAnimationMultiplier);
+        playerAnimation.SetFloat("animationSpeed", speedAnimationMultiplier);
     }
 
     void Update()
@@ -131,18 +157,5 @@ public class Animations : MonoBehaviour
         LeftandRightSpeed();
         Jumping();
         Attack();
-    }
-
-    public void play_Jumping_Up_Sound()
-    {
-        movementAudioPlayer.clip = Jump_Up_Sound;
-        movementAudioPlayer.Play();
-    }
-
-    public void play_Jumping_Down_Sound()
-    {
-        
-        movementAudioPlayer.clip = Jump_Down_Sound;
-        movementAudioPlayer.Play();
     }
 }

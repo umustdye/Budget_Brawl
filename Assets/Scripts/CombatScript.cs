@@ -7,63 +7,21 @@ public class CombatScript : MonoBehaviour
     // Components
     private GameInputScript input;
     private PlayerController controller;
-    public AudioSource fightingAudioPlayer;
 
     // Fighting
     [Header("Fighting")]
     public bool is_blocking = false;
     public bool is_punching = false;
     public bool is_kicking = false;
+    public bool is_special_attack = false;
     public float punch_time = 0.5f;
     public float kick_time = 0.8f;
+    public float special_attack_time = 4.0f;
     private float punch_delta = 0;
     private float kick_delta = 0;
-
-    //Fighting Sounds
-    [Header("FightingSounds")]
-    public AudioClip Blocking_Sound;
-    public AudioClip Punch_Impact_Sound;
-    public AudioClip Punch_Whoosh_Sound;
-    public AudioClip Kick_Whoosh_Sound;
-    public AudioClip Kick_Impact_Sound;
-    public AudioClip Jump_Whoosh_Sound;
+    private float special_attack_delta = 0;
 
 
-    public void play_Blocking_Sound()
-    {
-        fightingAudioPlayer.clip = Blocking_Sound;
-        fightingAudioPlayer.Play();
-    }
-
-    public void play_Punch_Impact_Sound() {
-        fightingAudioPlayer.clip = Punch_Impact_Sound;
-        fightingAudioPlayer.Play();
-    }
-
-    public void play_Punch_Whoosh_Sound()
-    {
-        fightingAudioPlayer.clip = Punch_Whoosh_Sound;
-        fightingAudioPlayer.Play();
-    }
-
-    public void play_Kick_Whoosh_Sound()
-    {
-        fightingAudioPlayer.clip = Kick_Whoosh_Sound;
-        fightingAudioPlayer.Play();
-    }
-
-    public void play_Kick_Impact_Sound()
-    {
-        fightingAudioPlayer.clip = Kick_Impact_Sound;
-        fightingAudioPlayer.Play();
-    }
-
-
-    public void play_Jump_Whoosh_Sound()
-    {
-        fightingAudioPlayer.clip = Jump_Whoosh_Sound;
-        fightingAudioPlayer.Play();
-    }
 
 
 
@@ -72,7 +30,6 @@ public class CombatScript : MonoBehaviour
     {
         input = GetComponent<GameInputScript>();
         controller = GetComponent<PlayerController>();
-        fightingAudioPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -104,17 +61,37 @@ public class CombatScript : MonoBehaviour
             }
         }
 
+        if(is_special_attack)
+        {
+            special_attack_delta += Time.deltaTime;
+            if(special_attack_delta >= special_attack_time)
+            {
+                special_attack_delta = 0;
+                is_special_attack = false;
+            }
+        }
+
         // Input
-        is_blocking = input.block && controller.is_touching_ground && !(is_punching || is_kicking);
+        is_blocking = input.block && controller.is_touching_ground && !IsAttacking();
         if(input.punch)
         {
-            is_punching = !(is_blocking || is_kicking);
+            is_punching = !(is_blocking || is_kicking || is_special_attack);
             input.punch = false;
         }
         if(input.kick)
         {
-            is_kicking = !(is_blocking || is_punching);
+            is_kicking = !(is_blocking || is_punching || is_special_attack);
             input.kick = false;
         }
+        if(input.special_attack)
+        {
+            is_special_attack = !(is_blocking || is_punching || is_kicking);
+            input.special_attack = false;
+        }
+    }
+
+    public bool IsAttacking()
+    {
+        return is_punching || is_kicking || is_special_attack;
     }
 }
