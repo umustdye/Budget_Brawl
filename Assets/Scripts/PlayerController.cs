@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private CombatScript combat;
     private SoundEffects soundfx;
 
+
     // Player Movement
     [Header("Movement")]
     public float walk_speed = 3.0f;
@@ -40,6 +41,9 @@ public class PlayerController : MonoBehaviour
     public float ground_offset = -0.51f;
     public bool is_touching_ground = false;
     public LayerMask ground_layers;
+
+
+
 
     // Start is called before the first frame update
     void Start()

@@ -9,6 +9,7 @@ public class PlayerGameInfo : MonoBehaviour
     //TODO: add integration for player lives/stocks
     //TODO: potentially add integration for roundtime/ number of rounds
     //TODO: link with blast/death animation
+    public List<GameObject> Players;
 
     public HealthBar player1HealthBar;
     public HealthBar player2HealthBar;
@@ -25,14 +26,14 @@ public class PlayerGameInfo : MonoBehaviour
     public bool player2Win = false;
     public bool player1Dead = false;
     public bool player2Dead = false;
-
-    public 
+    public BlastZoneBounds safe_zone;
 
     // Start is called before the first frame update
     void Start()
     {
         player1Health = 10000;
         player2Health = 10000;
+
         player1HealthBar.SetMaxHealth(player1Health);
         player2HealthBar.SetMaxHealth(player2Health);
 
@@ -48,7 +49,8 @@ public class PlayerGameInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
+       // if (!safe_zone.blastZoneBounds.Contains(Players[i]))
         player1HealthBar.SetHealth(player1Health);
         player2HealthBar.SetHealth(player2Health);
 
