@@ -945,6 +945,23 @@ Light:
   m_CorrespondingSourceObject: {fileID: 3075043607017181520, guid: c1c31c4fe3d8498479a782b6cdae158b, type: 3}
   m_PrefabInstance: {fileID: 3075043607679561670}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1017049760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4569837669056003343, guid: e13217e6925167645b271cd7eb15e099, type: 3}
+  m_PrefabInstance: {fileID: 301923915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1017049764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017049760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fab666a503bea4eba1b84a0aad211c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1067313591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1374,7 +1391,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325092532}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4, y: 0.29999992, z: 0.39999995}
@@ -1441,6 +1458,8 @@ GameObject:
   - component: {fileID: 1322964226}
   - component: {fileID: 1318742176}
   - component: {fileID: 1325092533}
+  - component: {fileID: 1325092534}
+  - component: {fileID: 1325092535}
   m_Layer: 3
   m_Name: LowMovingPlatform
   m_TagString: Untagged
@@ -1467,6 +1486,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1325092534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325092532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2326754b0330cf4eb0ac191d220985c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1325092535
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325092532}
+  m_Material: {fileID: 13400000, guid: 4e89d93a36721d245abff0d6a7500e05, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 0.29999992, z: 0.39999995}
+  m_Center: {x: -2, y: 0.049999993, z: 0.000000014901161}
 --- !u!4 &1325334294
 Transform:
   m_ObjectHideFlags: 0
