@@ -164,6 +164,7 @@ public class roundManager : MonoBehaviour
             if(currTimer < 4){
                 timeoverText.text = placeholder;
                 // TODO: make sure to reset everything else before the manager starts next round
+                // call respawn here when timed out
                 health.reset();
                 health.emptyChild();
                 special.reset();

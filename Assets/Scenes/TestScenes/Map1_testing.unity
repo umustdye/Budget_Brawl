@@ -764,6 +764,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 446185614455010942, guid: e13217e6925167645b271cd7eb15e099, type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 469083975}
+    - target: {fileID: 446185614455010942, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: player1HealthBar
       value: 
       objectReference: {fileID: 1515758758}
@@ -982,6 +986,14 @@ PrefabInstance:
     - target: {fileID: 2331311427238379462, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043702344798511628, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
+      propertyPath: halfXBounds
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043702344798511628, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
+      propertyPath: halfYBounds
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c70aa21ea69fee54f89a43f786386421, type: 3}

@@ -11,10 +11,10 @@ public class PlayerGameInfo : MonoBehaviour
     //TODO: link with blast/death animation
 
     public GameObject player1;
-    public GameObject player2;
+    // public GameObject player2;
 
     private linkPlayerHealth p1Health;
-    private linkPlayerHealth p2Health;
+    // private linkPlayerHealth p2Health;
 
     public int player1Lives = 3;
     public int player2Lives = 3;
@@ -36,10 +36,10 @@ public class PlayerGameInfo : MonoBehaviour
         // we have to dynamically add players to generalize certain logics we have right now
         // can easily be shortend by having a designated player list
         p1Health = player1.GetComponent<linkPlayerHealth>();
-        p2Health = player2.GetComponent<linkPlayerHealth>();
+        // p2Health = player2.GetComponent<linkPlayerHealth>();
 
         p1Health.refillFull();
-        p2Health.refillFull();
+        // p2Health.refillFull();
 
         player1Lives = 3;
         player2Lives = 3;
@@ -66,6 +66,7 @@ public class PlayerGameInfo : MonoBehaviour
                 //Respawn player 1
             }
         }
+        /*
         else if (p2Health.getHP() <= 0)
         {
             player2Dead = true;
@@ -79,5 +80,6 @@ public class PlayerGameInfo : MonoBehaviour
                 //Respawn player 2
             }
         }
+        */
     }
 }
