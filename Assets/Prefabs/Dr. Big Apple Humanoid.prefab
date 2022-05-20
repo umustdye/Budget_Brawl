@@ -2209,10 +2209,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.4328835
+  m_Radius: 0.2969154
   m_Height: 1.731534
   m_Direction: 1
-  m_Center: {x: -0, y: 0.865767, z: 0}
+  m_Center: {x: -0.033549607, y: 0.865767, z: 3.2679484e-17}
 --- !u!114 &2376922028680550719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2269,8 +2269,8 @@ MonoBehaviour:
   is_jumping: 0
   is_falling: 0
   fall_max_time: 1
-  ground_radius: 0.5
-  ground_offset: 0.45
+  ground_radius: 0.31
+  ground_offset: 0.24
   is_touching_ground: 0
   ground_layers:
     serializedVersion: 2
