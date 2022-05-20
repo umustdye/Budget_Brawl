@@ -31,6 +31,7 @@ public class linkPlayerHealth : MonoBehaviour
 
     // upon respawn or beginning of the game, refill player's health to max
     public void refillFull(){
+        currentHP = maxHP;
         healthBar.SetHealth(maxHP);
     }
 
