@@ -2209,10 +2209,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.4328835
+  m_Height: 1.731534
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: -0, y: 0.865767, z: 0}
 --- !u!114 &2376922028680550719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7233,12 +7233,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f67253c2aa9424d9f517e2eb1b5cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  characterAudioPlayer: {fileID: 0}
+  playerController: {fileID: 3338523181681567162}
+  characterAudioPlayer: {fileID: 8921287998077489801}
   Blocking_Sound: {fileID: 8300000, guid: 3fd639473fc13be42b07df2755be05ab, type: 3}
   Punch_Impact_Sound: {fileID: 8300000, guid: 4f8fbafe2b8651942bdbc006e659b696, type: 3}
   Punch_Whoosh_Sound: {fileID: 8300000, guid: f0d9d714e04c7604388cd8e938c6f504, type: 3}
-  Kick_Whoosh_Sound: {fileID: 8300000, guid: 1076d423a42bd624db77dd045000887d, type: 3}
+  Kick_Whoosh_Sound: {fileID: 8300000, guid: 6bbbb367e579eed45bad8799fc603898, type: 3}
   Kick_Impact_Sound: {fileID: 8300000, guid: 2f68415471fa4354eb9d9704f45ac951, type: 3}
   Jump_Up_Sound: {fileID: 8300000, guid: ba7e1a28f3073484a83be000fb673418, type: 3}
   Jump_Down_Sound: {fileID: 8300000, guid: aac7c2e920f305a4b9125e6399596c82, type: 3}

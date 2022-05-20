@@ -29,7 +29,9 @@ public class ItemInteraction : MonoBehaviour
             Physics.IgnoreCollision(collide.gameObject.GetComponent<Collider>(), GetComponent<Collider>(), true);
             // when player touches cube, player slightly moves in Z-axis
             // to counteract distortion, physically foced player to stay at one Z-position
-            collide.gameObject.transform.position = new Vector3(collide.gameObject.transform.position.x, collide.gameObject.transform.position.y, -3.275f);
+            // z-position is hard coded right now
+            float zPos = collide.gameObject.transform.position.z;
+            collide.gameObject.transform.position = new Vector3(collide.gameObject.transform.position.x, collide.gameObject.transform.position.y, zPos);
 
             // on collision item should be dispensed from ItemSpanwer.childItems and disappear
             Destroy(gameObject);

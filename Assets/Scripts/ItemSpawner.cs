@@ -14,10 +14,11 @@ public class ItemSpawner : MonoBehaviour
 
     // widths of stages may be different, set it accordingly to spawn items on the stage ground
     public float GROUND_WIDTH = 25f;
-    public const float SCREEN_HEIGHT = 2.0f; 
+    public const float SCREEN_HEIGHT = 4.0f; 
 
     private float timer = 0.0f;
-    private float fixedZ = -3.275f;
+    // may be fixed as the origin changes
+    private float fixedZ = 0.25f;
     // Start is called before the first frame update
     void Start()
     {
