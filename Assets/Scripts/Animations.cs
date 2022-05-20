@@ -11,6 +11,8 @@ public class Animations : MonoBehaviour
     private PlayerController playerController;
     //check combat/attack bools
     private CombatScript attack;
+    //animations for low health and death
+    private linkPlayerHealth health;
 
 
     [SerializeField] private float _inactiveTimerMax = 6; //six seconds
@@ -32,6 +34,7 @@ public class Animations : MonoBehaviour
         playerAnimation = GetComponent<Animator>();
         playerController = GetComponent<PlayerController>();
         attack = GetComponent<CombatScript>();
+        health = GetComponent<linkPlayerHealth>();
         playerAnimation.SetBool("isWalking", playerController.is_walking);
         playerAnimation.SetBool("isSprinting", playerController.is_sprinting);
         playerAnimation.SetBool("isIdle", playerController.is_idle);
@@ -44,6 +47,8 @@ public class Animations : MonoBehaviour
         playerAnimation.SetBool("isPunching", attack.is_punching);
         playerAnimation.SetBool("isKicking", attack.is_kicking); 
         playerAnimation.SetBool("isSpecialAttack", attack.is_special_attack);
+        playerAnimation.SetBool("lowHealth", health.lowHealth);
+        playerAnimation.SetBool("isDead", health.dead);
     }
 
 
@@ -152,10 +157,17 @@ public class Animations : MonoBehaviour
         playerAnimation.SetFloat("animationSpeed", speedAnimationMultiplier);
     }
 
+    void Health()
+    {
+        playerAnimation.SetBool("lowHealth", health.lowHealth);
+        playerAnimation.SetBool("isDead", health.dead);
+    }
+
     void Update()
     {
         LeftandRightSpeed();
         Jumping();
         Attack();
+        Health();
     }
 }

@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     public float jump_height = 3.0f;
     public int jump_max = 3;
     public bool is_jumping = false;
-    public bool waiting_to_land = false;
     private int jump_current = 0;
     private float vertical_velocity_delta = 0;
 
@@ -107,7 +106,6 @@ public class PlayerController : MonoBehaviour
                 is_jumping = true;
                 is_falling = false;
                 fall_current_time = 0;
-                waiting_to_land = true;
             }
             input.jump = false;
         }
