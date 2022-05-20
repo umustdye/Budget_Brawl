@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     private GameInputScript input;
     private Rigidbody rigid_body;
     private CombatScript combat;
-    private SoundEffects soundfx;
 
 
     // Player Movement
@@ -25,7 +24,6 @@ public class PlayerController : MonoBehaviour
     public float jump_height = 3.0f;
     public int jump_max = 3;
     public bool is_jumping = false;
-    public bool waiting_to_land = false;
     private int jump_current = 0;
     private float vertical_velocity_delta = 0;
 
@@ -51,7 +49,6 @@ public class PlayerController : MonoBehaviour
         input = GetComponent<GameInputScript>();
         rigid_body = GetComponent<Rigidbody>();
         combat = GetComponent<CombatScript>();
-        soundfx = GetComponent<SoundEffects>();
         ground_layers = LayerMask.GetMask("Ground");
     }
 
@@ -74,7 +71,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 center = new Vector3(transform.position.x, transform.position.y + ground_offset, transform.position.z);
         is_touching_ground = Physics.CheckSphere(center, ground_radius, ground_layers, QueryTriggerInteraction.Ignore);
-        Debug.Log("is_touching_ground: " + is_touching_ground);
+        // Debug.Log("is_touching_ground: " + is_touching_ground);
     }
 
     void FallingCheck()
@@ -100,27 +97,20 @@ public class PlayerController : MonoBehaviour
     {
         if(is_touching_ground)
         {
-            if (waiting_to_land) { 
-                waiting_to_land = false;
-                soundfx.play_Jumping_Down_Sound();
-            }
             is_jumping = false;
             jump_current = 0;
         }
 
         if(input.jump)
         {
-            if(jump_current < jump_max && !(combat.is_punching || combat.is_kicking))
-            {   
+            if(jump_current < jump_max && !combat.IsAttacking())
+            {
                 ++jump_current;
-                if (jump_current == 1) { soundfx.play_Jumping_Up_Sound(); }
-                else { soundfx.play_Jump_Whoosh_Sound(); }
                 rigid_body.velocity = new Vector3(rigid_body.velocity.x, 0, 0); // Vertical velocity zero for full height jump in air
                 vertical_velocity_delta = Mathf.Sqrt(jump_height * -2f * Physics.gravity.y);
                 is_jumping = true;
                 is_falling = false;
                 fall_current_time = 0;
-                waiting_to_land = true;
             }
             input.jump = false;
         }
@@ -138,9 +128,9 @@ public class PlayerController : MonoBehaviour
         is_sprinting = is_touching_ground && input.player_direction != 0 && input.sprint && !combat.is_blocking;
 
         // Update velocity
-        if(combat.is_blocking)
+        if(combat.is_blocking || (combat.IsAttacking() && is_touching_ground))
         {
-            horizontal_velocity_delta = -rigid_body.velocity.x; // Stop player movement when blocking
+            horizontal_velocity_delta = -rigid_body.velocity.x; // Stop player movement during combat
         }
         else
         {
@@ -151,7 +141,7 @@ public class PlayerController : MonoBehaviour
 
     void ApplyRotation()
     {
-        if(input.player_direction != 0)
+        if(input.player_direction != 0 && !combat.IsAttacking())
         {
             Quaternion new_rotation = Quaternion.LookRotation(new Vector3(input.player_direction, 0, 0));
             rigid_body.MoveRotation(new_rotation);
