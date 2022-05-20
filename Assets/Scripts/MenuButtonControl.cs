@@ -6,9 +6,9 @@ using TMPro;
 
 public class MenuButtonControl : MonoBehaviour
 {
-    private GameObject main_menu;
-    private GameObject credits_menu;
-    private GameObject level_select_menu;
+    public GameObject main_menu;
+    public GameObject credits_menu;
+    public GameObject level_select_menu;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,10 @@ public class MenuButtonControl : MonoBehaviour
         main_menu = transform.Find("MainMenu").gameObject;
         credits_menu = transform.Find("CreditsMenu").gameObject;
         level_select_menu = transform.Find("LevelSelectMenu").gameObject;
+
+        Debug.Log("level: " + level_select_menu);
+        Debug.Log("main: " + main_menu);
+        Debug.Log("credits: " + credits_menu);
 
         main_menu.SetActive(true);
         credits_menu.SetActive(false);
