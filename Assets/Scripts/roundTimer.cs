@@ -19,7 +19,6 @@ public class roundTimer : MonoBehaviour
     void Start()
     {
         manager = roundManager.GetComponent<roundManager>();
-        restart();
     }
 
     // Update is called once per frame
@@ -57,8 +56,12 @@ public class roundTimer : MonoBehaviour
 
     public void restart(){
         isRunning = true;
+    }
+
+    public void reset(){
         timerText.color = Color.black;
         roundTime = maxTime;
+        displayTime();
     }
 
     int getMinutes(){

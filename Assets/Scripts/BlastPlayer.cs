@@ -29,11 +29,15 @@ public class BlastPlayer : MonoBehaviour
         
         for (int i = 0; i < playerList.playerList.Count; ++i)
         {
-            Vector3 playerPosition = playerList.playerList[i].transform.position;
+            GameObject player = playerList.playerList[i];
+            if(player.tag != "Player"){
+                continue;
+            }
+            Vector3 playerPosition = player.transform.position;
 
             if (!blastZone.blastZoneBounds.Contains(playerPosition))
             {
-                KillPlayer(playerList.playerList[i]);
+                KillPlayer(player);
             }
         }
     }
@@ -55,17 +59,7 @@ public class BlastPlayer : MonoBehaviour
         // "Deletes" the player without removing it from the Scene
         player.transform.localScale = new Vector3(0, 0, 0);
 
-        switch (player.tag)
-        {
-            case "Player1":
-                playerGameInfo.player1Health = 0;
-                break;
-
-            case "Player2":
-                playerGameInfo.player2Health = 0;
-                break;
-        }
-
+        linkPlayerHealth playerHealth = player.GetComponent<linkPlayerHealth>();
+        playerHealth.ApplyDamage(playerHealth.maxHP);
     }
-
 }

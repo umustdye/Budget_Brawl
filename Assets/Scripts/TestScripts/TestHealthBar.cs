@@ -20,15 +20,26 @@ public class TestHealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             ApplyDamage(1313);
+
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ApplyHealing(1313);
         }
     }
 
     private void ApplyDamage(int damage)
     {
         currentHP -= damage;
+        healthBarLeft.SetHealth(currentHP);
+        healthBarRight.SetHealth(currentHP);
+    }
+    private void ApplyHealing(int hpRestored)
+    {
+        currentHP += hpRestored;
         healthBarLeft.SetHealth(currentHP);
         healthBarRight.SetHealth(currentHP);
     }

@@ -6,21 +6,18 @@ public class BlastZoneBounds : MonoBehaviour
 {
     // Code follows similar bounds creation to the CameraBounds script
 
-    public float halfXBounds = 20f;
-    public float halfYBounds = 15f;
-    public float halfZBounds = 5f;
+    public float halfXBounds;
+    public float halfYBounds;
+    public float halfZBounds;
 
     public Bounds blastZoneBounds;
 
-    void Update()
+    void Start()
     {
-        Vector3 position = gameObject.transform.position;
+        Vector3 position = transform.position;
         Bounds bounds = new Bounds();
-
         bounds.Encapsulate(new Vector3(position.x - halfXBounds, position.y - halfYBounds, position.z - halfZBounds));
         bounds.Encapsulate(new Vector3(position.x + halfXBounds, position.y + halfYBounds, position.z + halfZBounds));
         blastZoneBounds = bounds;
     }
-
-
 }
