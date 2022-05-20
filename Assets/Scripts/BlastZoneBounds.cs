@@ -14,7 +14,7 @@ public class BlastZoneBounds : MonoBehaviour
 
     void Start()
     {
-        Vector3 position = transform.position;
+        Vector3 position = gameObject.transform.position;
         Bounds bounds = new Bounds();
         bounds.Encapsulate(new Vector3(position.x - halfXBounds, position.y - halfYBounds, position.z - halfZBounds));
         bounds.Encapsulate(new Vector3(position.x + halfXBounds, position.y + halfYBounds, position.z + halfZBounds));

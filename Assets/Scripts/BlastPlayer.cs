@@ -5,7 +5,6 @@ using UnityEngine;
 public class BlastPlayer : MonoBehaviour
 {
     public BlastZoneBounds blastZone;
-    public SmashCam playerList;
 
     private PlayerController playerController;
     private PlayerGameInfo playerGameInfo;
@@ -13,7 +12,7 @@ public class BlastPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerGameInfo = GameObject.FindObjectOfType<PlayerGameInfo>();
     }
 
     // Update is called once per frame
@@ -27,9 +26,9 @@ public class BlastPlayer : MonoBehaviour
     {
 
         
-        for (int i = 0; i < playerList.playerList.Count; ++i)
+        for (int i = 0; i < playerGameInfo.Players.Count; ++i)
         {
-            GameObject player = playerList.playerList[i];
+            GameObject player = playerGameInfo.Players[i];
             if(player.tag != "Player"){
                 continue;
             }
@@ -45,7 +44,7 @@ public class BlastPlayer : MonoBehaviour
     private void KillPlayer(GameObject player)
     {
         Rigidbody playerBody = player.GetComponent(typeof(Rigidbody)) as Rigidbody;
-        playerGameInfo = GameObject.FindObjectOfType<PlayerGameInfo>();
+        
         playerController = player.GetComponent(typeof(PlayerController)) as PlayerController;
 
         // Freezes player object in place at position of death

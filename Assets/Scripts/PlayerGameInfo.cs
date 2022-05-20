@@ -30,7 +30,6 @@ public class PlayerGameInfo : MonoBehaviour
     public bool player2Win = false;
     public bool player1Dead = false;
     public bool player2Dead = false;
-    public BlastZoneBounds safe_zone;
 
     // Start is called before the first frame update
     void Start()
