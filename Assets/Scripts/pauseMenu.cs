@@ -7,10 +7,12 @@ public class pauseMenu : MonoBehaviour
     private bool isPaused;
 
     public GameObject pauseMenuUI;
+    public GameObject soundUI;
 
     // Start is called before the first frame update
     void Start()
     {
+        soundUI.SetActive(false);
         pauseMenuUI.SetActive(false);
         isPaused = false;
     }
@@ -19,7 +21,7 @@ public class pauseMenu : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape)){
-            Debug.Log("esc pressed");
+            // Debug.Log("esc pressed");
             if(isPaused){
                 // resume the game here
                 // remove game menu
@@ -49,8 +51,12 @@ public class pauseMenu : MonoBehaviour
         isPaused = true;
     }
 
+    public void enableSound(){
+        soundUI.SetActive(true);
+    }
+
     public void toMenu(){
-        // TODO: move to the menu onClikc()
+        // TODO: move to the menu onClick()
     }
 
     public void quit(){
