@@ -2058,6 +2058,7 @@ GameObject:
   - component: {fileID: -1975365534444374229}
   - component: {fileID: 830992946631217476}
   - component: {fileID: 6120297591619349039}
+  - component: {fileID: 5568997804041978412}
   m_Layer: 0
   m_Name: Female_Player_Humanoid
   m_TagString: Untagged
@@ -2130,7 +2131,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7171833892928136833}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4e89d93a36721d245abff0d6a7500e05, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -7145,6 +7146,28 @@ MonoBehaviour:
   lowHealth: 0
   dead: 0
   healthBar: {fileID: 0}
+--- !u!114 &5568997804041978412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171833892928136833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f67253c2aa9424d9f517e2eb1b5cbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 48925280147283882}
+  characterAudioPlayer: {fileID: -1975365534444374229}
+  Blocking_Sound: {fileID: 8300000, guid: 3fd639473fc13be42b07df2755be05ab, type: 3}
+  Punch_Impact_Sound: {fileID: 8300000, guid: 4f8fbafe2b8651942bdbc006e659b696, type: 3}
+  Punch_Whoosh_Sound: {fileID: 8300000, guid: f0d9d714e04c7604388cd8e938c6f504, type: 3}
+  Kick_Whoosh_Sound: {fileID: 8300000, guid: 6bbbb367e579eed45bad8799fc603898, type: 3}
+  Kick_Impact_Sound: {fileID: 8300000, guid: 2f68415471fa4354eb9d9704f45ac951, type: 3}
+  Jump_Up_Sound: {fileID: 8300000, guid: ba7e1a28f3073484a83be000fb673418, type: 3}
+  Jump_Down_Sound: {fileID: 8300000, guid: aac7c2e920f305a4b9125e6399596c82, type: 3}
+  Jump_Whoosh_Sound: {fileID: 8300000, guid: f958282e5fa2e8d4599de2431096cef9, type: 3}
 --- !u!1 &7708241299732706288
 GameObject:
   m_ObjectHideFlags: 0
