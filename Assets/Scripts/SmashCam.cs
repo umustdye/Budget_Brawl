@@ -72,7 +72,7 @@ public class SmashCam: MonoBehaviour
         averageCenter = (totalPositions / playerList.Count);
 
         float extents = (playerBounds.extents.x + playerBounds.extents.y);
-        float lerpPercent = Mathf.InverseLerp(0, (cameraBound.halfXBounds + cameraBound.halfYBounds) / 1.5f, extents);
+        float lerpPercent = Mathf.InverseLerp(0, (cameraBound.halfXBounds + cameraBound.halfYBounds) / 2f, extents);
 
         float depth = Mathf.Lerp(maxDepth, minDepth, lerpPercent);
         float angle = Mathf.Lerp(maxAngle, minAngle, lerpPercent);
