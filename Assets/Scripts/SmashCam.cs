@@ -15,6 +15,8 @@ public class SmashCam: MonoBehaviour
     // Holds the list of players in a map
     public List<GameObject> playerList;
 
+    public float yOffset;
+
     // Defines the camera speed 
     public float positionUpdateSpeed;
     public float angleUpdateSpeed;
@@ -78,7 +80,7 @@ public class SmashCam: MonoBehaviour
         float angle = Mathf.Lerp(maxAngle, minAngle, lerpPercent);
 
         camEulerX = angle;
-        camPosition = new Vector3(averageCenter.x, averageCenter.y, depth);
+        camPosition = new Vector3(averageCenter.x, averageCenter.y + yOffset, depth);
     }
 
     private void MoveCamera()

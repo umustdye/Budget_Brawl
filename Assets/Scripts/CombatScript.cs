@@ -7,17 +7,21 @@ public class CombatScript : MonoBehaviour
     // Components
     private GameInputScript input;
     private PlayerController controller;
-    
 
     // Fighting
     [Header("Fighting")]
     public bool is_blocking = false;
     public bool is_punching = false;
     public bool is_kicking = false;
+    public bool is_special_attack = false;
     public float punch_time = 0.5f;
     public float kick_time = 0.8f;
+    public float special_attack_time = 4.0f;
     private float punch_delta = 0;
     private float kick_delta = 0;
+    private float special_attack_delta = 0;
+
+
 
 
 
@@ -26,7 +30,6 @@ public class CombatScript : MonoBehaviour
     {
         input = GetComponent<GameInputScript>();
         controller = GetComponent<PlayerController>();
-
     }
 
     // Update is called once per frame
@@ -58,17 +61,37 @@ public class CombatScript : MonoBehaviour
             }
         }
 
+        if(is_special_attack)
+        {
+            special_attack_delta += Time.deltaTime;
+            if(special_attack_delta >= special_attack_time)
+            {
+                special_attack_delta = 0;
+                is_special_attack = false;
+            }
+        }
+
         // Input
-        is_blocking = input.block && controller.is_touching_ground && !(is_punching || is_kicking);
+        is_blocking = input.block && controller.is_touching_ground && !IsAttacking();
         if(input.punch)
         {
-            is_punching = !(is_blocking || is_kicking);
+            is_punching = !(is_blocking || is_kicking || is_special_attack);
             input.punch = false;
         }
         if(input.kick)
         {
-            is_kicking = !(is_blocking || is_punching);
+            is_kicking = !(is_blocking || is_punching || is_special_attack);
             input.kick = false;
         }
+        if(input.special_attack)
+        {
+            is_special_attack = !(is_blocking || is_punching || is_kicking);
+            input.special_attack = false;
+        }
+    }
+
+    public bool IsAttacking()
+    {
+        return is_punching || is_kicking || is_special_attack;
     }
 }
