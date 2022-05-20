@@ -12,11 +12,14 @@ public class PlayerGameInfo : MonoBehaviour
 
     public HealthBar player1HealthBar;
     public HealthBar player2HealthBar;
+    public Stonks player1Stocks;
+    public Stonks player2Stocks;
     public int player1Health = 10000;
     public int player2Health = 10000;
 
-    public int player1Lives = 3;
-    public int player2Lives = 3;
+    public static int playerLives = 4;
+    public int player1Lives;
+    public int player2Lives;
 
     public int roundTime;
 
@@ -26,8 +29,6 @@ public class PlayerGameInfo : MonoBehaviour
     public bool player1Dead = false;
     public bool player2Dead = false;
 
-    public 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -36,12 +37,17 @@ public class PlayerGameInfo : MonoBehaviour
         player1HealthBar.SetMaxHealth(player1Health);
         player2HealthBar.SetMaxHealth(player2Health);
 
-        player1Lives = 3;
-        player2Lives = 3;
+        player1Lives = playerLives;
+        player2Lives = playerLives;
         player1Win = false;
         player2Win = false;
         player1Dead = false;
         player2Dead = false;
+
+        player1Stocks.MarketOpen();
+        player2Stocks.MarketOpen();
+        player1Lives = playerLives;
+        player2Lives = playerLives;
 
     }
 
