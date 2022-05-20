@@ -16,17 +16,17 @@ public class SmashCam: MonoBehaviour
     public List<GameObject> playerList;
 
     // Defines the camera speed 
-    public float positionUpdateSpeed = 5;
-    public float angleUpdateSpeed = 7;
-    public float depthUpdateSpeed = 5;
+    public float positionUpdateSpeed;
+    public float angleUpdateSpeed;
+    public float depthUpdateSpeed;
 
     // Defines the range the camera will tilt
-    public float maxAngle = 11;
-    public float minAngle = 3;
+    public float maxAngle;
+    public float minAngle;
 
     // Defines the range that the camera will zoom in or out
-    public float maxDepth = -10;
-    public float minDepth = -22;
+    public float maxDepth;
+    public float minDepth;
 
     private float camEulerX;
     private Vector3 camPosition;
@@ -58,7 +58,6 @@ public class SmashCam: MonoBehaviour
         for (int i = 0; i < playerList.Count; ++i)
         {
             Vector3 playerPosition = playerList[i].transform.position;
-
             if (!cameraBound.cameraBound.Contains(playerPosition))
             {
                 float playerX = Mathf.Clamp(playerPosition.x, cameraBound.cameraBound.min.x, cameraBound.cameraBound.max.x);
@@ -66,7 +65,6 @@ public class SmashCam: MonoBehaviour
                 float playerZ = Mathf.Clamp(playerPosition.z, cameraBound.cameraBound.min.z, cameraBound.cameraBound.max.z);
                 playerPosition = new Vector3(playerX, playerY, playerZ);
             }
-
             totalPositions += playerPosition;
             playerBounds.Encapsulate(playerPosition);
         }
@@ -74,7 +72,7 @@ public class SmashCam: MonoBehaviour
         averageCenter = (totalPositions / playerList.Count);
 
         float extents = (playerBounds.extents.x + playerBounds.extents.y);
-        float lerpPercent = Mathf.InverseLerp(0, (cameraBound.halfXBounds + cameraBound.halfYBounds) / 2, extents);
+        float lerpPercent = Mathf.InverseLerp(0, (cameraBound.halfXBounds + cameraBound.halfYBounds) / 2f, extents);
 
         float depth = Mathf.Lerp(maxDepth, minDepth, lerpPercent);
         float angle = Mathf.Lerp(maxAngle, minAngle, lerpPercent);

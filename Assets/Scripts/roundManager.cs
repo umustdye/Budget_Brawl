@@ -7,6 +7,12 @@ public class roundManager : MonoBehaviour
 {
     // set it to round manager gameobject
     public GameObject roundTime;
+    public GameObject healthSpawner;
+    public GameObject specialSpawner;
+
+    private ItemSpawner health;
+    private ItemSpawner special;
+
     // automatically set it to its child
     public Text timeoverText;
 
@@ -15,6 +21,7 @@ public class roundManager : MonoBehaviour
     private bool isAnimationRunning;
     private bool transitionToNextRound;
     private bool waitForTransition;
+    private bool isRoundStart;
     public int roundNum = 3;
 
     private float animationSpeed = 0.3f;
@@ -25,15 +32,26 @@ public class roundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        health = healthSpawner.GetComponent<ItemSpawner>();
+        special = specialSpawner.GetComponent<ItemSpawner>();
+
         timer = roundTime.GetComponent<roundTimer>();
+        isRoundStart = true;
         isRoundEnd = false;
         isAnimationRunning = false;
         transitionToNextRound = false;
+
+        // 4 seconds are offset
+            currTimer = 4.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(isRoundStart){
+            waitTransition(9);
+        }
+
         if(isRoundEnd){
             roundEnd();
         }
@@ -43,7 +61,7 @@ public class roundManager : MonoBehaviour
         }
 
         if(waitForTransition){
-            waitTransition();
+            waitTransition(9);
         }
 
         if(transitionToNextRound){
@@ -59,10 +77,7 @@ public class roundManager : MonoBehaviour
         // transition animations? another waiting time, dispose "TIME OVER"
         // respawn and position all characters
         // restart the timer
-        placeholder = "";
         waitForTransition = false;
-
-        timer.restart();
         transitionToNextRound = false;
     }
 
@@ -125,6 +140,7 @@ public class roundManager : MonoBehaviour
         // through player manager, disable all inputs of players while waiting
         // maybe play lose animations for characters and win animation for character with the highest number of lives
     }
+
     // run until desgnated time is reached, when timer runs out assert waitEnd to signal
     void waitTime(){
         if(currTimer < maxSeconds){
@@ -136,18 +152,25 @@ public class roundManager : MonoBehaviour
         }
     }
     // set wait time of 9 seconds, wait; then, transition to the next round
-    void waitTransition(){
-        setWaitTime(9);
+    void waitTransition(int waitSeconds){
+        setWaitTime(waitSeconds);
         waitTime();
         if(waitEnd){
             transitionToNextRound = true;
             waitEnd = false;
+            isRoundStart = false;
         }
         else{
             if(currTimer < 4){
                 timeoverText.text = placeholder;
+                // TODO: make sure to reset everything else before the manager starts next round
+                health.reset();
+                health.emptyChild();
+                special.reset();
+                special.emptyChild();
             }
             else if(4 <= currTimer && currTimer < 6){
+                timer.reset();
                 timeoverText.text = "READY!";
             }
             else if(6 <= currTimer && currTimer < 8){
@@ -155,6 +178,7 @@ public class roundManager : MonoBehaviour
             }
             else{
                 timeoverText.text = "";
+                timer.restart();
             }
         }
     }

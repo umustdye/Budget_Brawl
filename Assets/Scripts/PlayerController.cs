@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigid_body;
     private CombatScript combat;
 
+
     // Player Movement
     [Header("Movement")]
     public float walk_speed = 3.0f;
@@ -39,6 +40,9 @@ public class PlayerController : MonoBehaviour
     public bool is_touching_ground = false;
     public LayerMask ground_layers;
 
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,26 +71,26 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 center = new Vector3(transform.position.x, transform.position.y + ground_offset, transform.position.z);
         is_touching_ground = Physics.CheckSphere(center, ground_radius, ground_layers, QueryTriggerInteraction.Ignore);
-        Debug.Log("is_touching_ground: " + is_touching_ground);
+        // Debug.Log("is_touching_ground: " + is_touching_ground);
     }
 
     void FallingCheck()
     {
-        if(is_touching_ground)
+        fall_current_time += Time.fixedDeltaTime;
+        
+        if (is_touching_ground)
         {
             is_falling = false;
             fall_current_time = 0;
         }
-        else
-        {
-            fall_current_time += Time.fixedDeltaTime;
-            if(fall_current_time > fall_max_time)
-            {
-                is_falling = true;
-                is_jumping = false;
-            }
-        }
+        else if (fall_current_time > fall_max_time || Vector3.Dot(GetComponent<Rigidbody>().velocity, Vector3.up) < -0.01f) {
+                    is_falling = true;
+                    is_jumping = false;
+
     }
+        
+        
+}
 
     void UpdateJump()
     {
@@ -98,12 +102,11 @@ public class PlayerController : MonoBehaviour
 
         if(input.jump)
         {
-            if(jump_current < jump_max && !(combat.is_punching || combat.is_kicking))
+            if(jump_current < jump_max && !combat.IsAttacking())
             {
                 ++jump_current;
                 rigid_body.velocity = new Vector3(rigid_body.velocity.x, 0, 0); // Vertical velocity zero for full height jump in air
                 vertical_velocity_delta = Mathf.Sqrt(jump_height * -2f * Physics.gravity.y);
-
                 is_jumping = true;
                 is_falling = false;
                 fall_current_time = 0;
@@ -124,9 +127,9 @@ public class PlayerController : MonoBehaviour
         is_sprinting = is_touching_ground && input.player_direction != 0 && input.sprint && !combat.is_blocking;
 
         // Update velocity
-        if(combat.is_blocking)
+        if(combat.is_blocking || (combat.IsAttacking() && is_touching_ground))
         {
-            horizontal_velocity_delta = -rigid_body.velocity.x; // Stop player movement when blocking
+            horizontal_velocity_delta = -rigid_body.velocity.x; // Stop player movement during combat
         }
         else
         {
@@ -137,7 +140,7 @@ public class PlayerController : MonoBehaviour
 
     void ApplyRotation()
     {
-        if(input.player_direction != 0)
+        if(input.player_direction != 0 && !combat.IsAttacking())
         {
             Quaternion new_rotation = Quaternion.LookRotation(new Vector3(input.player_direction, 0, 0));
             rigid_body.MoveRotation(new_rotation);
