@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
         if (is_touching_ground)
         {
             is_falling = false;
-            waiting_to_land = false;
             fall_current_time = 0;
         }
         else if (fall_current_time > fall_max_time || Vector3.Dot(GetComponent<Rigidbody>().velocity, Vector3.up) < -0.01f) {
