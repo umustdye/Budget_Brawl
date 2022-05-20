@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigid_body;
     private CombatScript combat;
 
+
     // Player Movement
     [Header("Movement")]
     public float walk_speed = 3.0f;
@@ -38,6 +39,9 @@ public class PlayerController : MonoBehaviour
     public float ground_offset = -0.51f;
     public bool is_touching_ground = false;
     public LayerMask ground_layers;
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -72,21 +76,22 @@ public class PlayerController : MonoBehaviour
 
     void FallingCheck()
     {
-        if(is_touching_ground)
+        fall_current_time += Time.fixedDeltaTime;
+        
+        if (is_touching_ground)
         {
             is_falling = false;
+            waiting_to_land = false;
             fall_current_time = 0;
         }
-        else
-        {
-            fall_current_time += Time.fixedDeltaTime;
-            if(fall_current_time > fall_max_time)
-            {
-                is_falling = true;
-                is_jumping = false;
-            }
-        }
+        else if (fall_current_time > fall_max_time || Vector3.Dot(GetComponent<Rigidbody>().velocity, Vector3.up) < -0.01f) {
+                    is_falling = true;
+                    is_jumping = false;
+
     }
+        
+        
+}
 
     void UpdateJump()
     {

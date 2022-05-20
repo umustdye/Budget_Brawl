@@ -2251,7 +2251,7 @@ GameObject:
   m_Layer: 0
   m_Name: Female_Player
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2263,7 +2263,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8160044105240706494}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2058288631436246905}
@@ -2286,7 +2286,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!136 &9079016264875487751
 CapsuleCollider:
@@ -2295,7 +2295,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8160044105240706494}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4e89d93a36721d245abff0d6a7500e05, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -2383,10 +2383,11 @@ MonoBehaviour:
   jump_height: 3
   jump_max: 3
   is_jumping: 0
+  waiting_to_land: 0
   is_falling: 0
   fall_max_time: 1
-  ground_radius: 0.5
-  ground_offset: 0.45
+  ground_radius: 0.28
+  ground_offset: 0.17
   is_touching_ground: 0
   ground_layers:
     serializedVersion: 2

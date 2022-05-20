@@ -9,6 +9,7 @@ public class PlayerGameInfo : MonoBehaviour
     //TODO: add integration for player lives/stocks
     //TODO: potentially add integration for roundtime/ number of rounds
     //TODO: link with blast/death animation
+    public List<GameObject> Players;
 
     public GameObject player1;
     public GameObject player2;
@@ -26,8 +27,7 @@ public class PlayerGameInfo : MonoBehaviour
     public bool player2Win = false;
     public bool player1Dead = false;
     public bool player2Dead = false;
-
-    public 
+    public BlastZoneBounds safe_zone;
 
     // Start is called before the first frame update
     void Start()
