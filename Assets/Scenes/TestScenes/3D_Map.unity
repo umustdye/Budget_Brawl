@@ -794,6 +794,10 @@ PrefabInstance:
       value: Terrain
       objectReference: {fileID: 0}
     - target: {fileID: 5321979044144947494, guid: 65b8fb02bf65ddf4f8a1ea91d0bb266e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321979044144947494, guid: 65b8fb02bf65ddf4f8a1ea91d0bb266e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -860,15 +864,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9043702344798511628, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
       propertyPath: halfXBounds
-      value: 100
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9043702344798511628, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
       propertyPath: halfYBounds
-      value: 100
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9043702344798511628, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
       propertyPath: halfZBounds
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
@@ -1023,15 +1027,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
       propertyPath: maxDepth
-      value: -7.5
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
       propertyPath: minAngle
-      value: -3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
       propertyPath: minDepth
-      value: -25
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
       propertyPath: cameraBound
