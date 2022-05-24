@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class textRoundStart : MonoBehaviour
+public class textRoundStart : textParent
 {
     TMP_Text text;
     float speed = 30.0f;
     float animationSeconds = 0.5f;
 
-    public bool isEnter = true;
-    public bool isAnimationEnd = false;
     bool isExit = false;
     bool isReady = true;
     bool isWait = false;
@@ -21,7 +19,7 @@ public class textRoundStart : MonoBehaviour
     void Start()
     {
         text = GetComponent<TMP_Text>();
-        disappear();
+        disappear(0.0f);
     }
 
     // Update is called once per frame
@@ -53,14 +51,14 @@ public class textRoundStart : MonoBehaviour
     }
 
     // reset the position of text to out of the screen to the right
-    public void disappear(){
+    public override void disappear(float time){
         transform.localPosition = new Vector3(1350, 40, 0);
         speed = transform.localPosition.x / animationSeconds;
     }
 
     // text moves from right to left
     // stop when the text reaches middle of the screen
-    public void appear(float time){
+    public override void appear(float time){
         if(transform.localPosition.x > 0){
             Vector3 speedVec = new Vector3(-speed, 0, 0);
             transform.Translate(speedVec * time);
@@ -92,8 +90,12 @@ public class textRoundStart : MonoBehaviour
                 // animation ends here
                 isAnimationEnd = true;
             }
-            disappear();
+            disappear(time);
         }  
+    }
+
+    public override void setAnimationSeconds(float time){
+        // animationSeconds = time;
     }
 
     public void ready(){

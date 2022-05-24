@@ -11,6 +11,7 @@ public class ItemSpawner : MonoBehaviour
 
     public float minSpawnTime = 35.0f;
     public float maxSpawnTime = 50.0f;
+    public bool isRunning = false;
 
     // widths of stages may be different, set it accordingly to spawn items on the stage ground
     public float GROUND_WIDTH = 25f;
@@ -31,15 +32,17 @@ public class ItemSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timer >= spawnTime){
-            // copies item and enables it
-            GameObject child = Instantiate(parentItem, getRandomPosition(), Quaternion.identity);
-            child.SetActive(true);
-            childItems.Add(child);
-            // once item is created, reset the timer and set another random interval for spawwner
-            reset();
+        if(isRunning){
+            if(timer >= spawnTime){
+                // copies item and enables it
+                GameObject child = Instantiate(parentItem, getRandomPosition(), Quaternion.identity);
+                child.SetActive(true);
+                childItems.Add(child);
+                // once item is created, reset the timer and set another random interval for spawwner
+                reset();
+            }
+            timer += Time.deltaTime;
         }
-        timer += Time.deltaTime;
     }
 
     private float getRandom(float min, float max){
@@ -50,6 +53,10 @@ public class ItemSpawner : MonoBehaviour
         float horizon = getRandom(-(GROUND_WIDTH/2), GROUND_WIDTH/2);
         float height = getRandom(2.0f, 3.0f);
         return new Vector3(horizon, SCREEN_HEIGHT, fixedZ);
+    }
+
+    public void restart(){
+        isRunning = true;
     }
 
     public void reset(){

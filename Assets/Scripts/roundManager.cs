@@ -13,9 +13,11 @@ public class roundManager : MonoBehaviour
     private ItemSpawner health;
     private ItemSpawner special;
 
+    public GameObject roundStart;
     public GameObject timeover;
     
-    private textAnimation timeoverAnim;
+    private textParent roundStartAnim;
+    private textParent timeoverAnim;
     private roundTimer timer;
     public bool isRoundEnd;
     public int roundNum = 3;
@@ -28,6 +30,7 @@ public class roundManager : MonoBehaviour
         special = specialSpawner.GetComponent<ItemSpawner>();
 
         timer = roundTime.GetComponent<roundTimer>();
+        roundStartAnim = roundStart.GetComponent<textRoundStart>();
         timeoverAnim = timeover.GetComponent<textAnimation>();
 
         // reset the timer to round time
@@ -41,9 +44,12 @@ public class roundManager : MonoBehaviour
     {
         // if ready/fight animation ends
         // restart the timer
-        if(timeoverAnim.transition.isAnimationEnd){
+        if(roundStartAnim.isAnimationEnd){
+            // ACTIONS: when round starts
             timer.restart();
-            timeoverAnim.transition.isAnimationEnd = false;
+            health.restart();
+            special.restart();
+            roundStartAnim.isAnimationEnd = false;
         }
         if(isRoundEnd){
             roundEnd();
@@ -53,24 +59,26 @@ public class roundManager : MonoBehaviour
     void roundEnd(){
         // pause() the whole game(maybe gameManager?), character movements are stopped
         // after the time over animation, goes to the next round or end the game
-        // Debug.Log("Round Ended");
-        if(roundNum == 0){
-            // end the game and move to the result screen
-            Debug.Log("Game Ended");
-            return;
-        }
-        else{
+        if(roundNum > 0){
             roundNum--;
         }
+        if(roundNum <= 0){
+            // end the game and move to the result screen
+            Debug.Log("Game Ended");
+            isRoundEnd = false;
+
+            return;
+        }
         
-        // play round ending animation
+        // ACTIONS: when round ends
         // add transition logics:
         //      reset the timer
         //      play time over animation
         //      ready for ready/fight animation
         //      clean items on the stage
         timeoverAnim.setAnimationSeconds(4.0f);
-        timeoverAnim.isTimeOver = true;
+        timeoverAnim.isAnimationEnd = false;
+        timeoverAnim.isEnter = true;
         timer.reset();
 
         health.reset();
