@@ -389,6 +389,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2024695761}
     - target: {fileID: 446185614455010942, guid: e13217e6925167645b271cd7eb15e099, type: 3}
+      propertyPath: safe_zone
+      value: 
+      objectReference: {fileID: 765773881}
+    - target: {fileID: 446185614455010942, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: player1HealthBar
       value: 
       objectReference: {fileID: 191744530}
@@ -398,16 +402,16 @@ PrefabInstance:
       objectReference: {fileID: 191744529}
     - target: {fileID: 446185614455010942, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: Players.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 446185614455010942, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: Players.Array.data[0]
       value: 
-      objectReference: {fileID: 8160044105240706494, guid: e19ead425679f5941a46591f55a1c77e, type: 3}
+      objectReference: {fileID: 2024695761}
     - target: {fileID: 446185614455010942, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: Players.Array.data[1]
       value: 
-      objectReference: {fileID: 8160044105240706494, guid: e19ead425679f5941a46591f55a1c77e, type: 3}
+      objectReference: {fileID: 1995468457}
     - target: {fileID: 446185614455010942, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: Players.Array.data[2]
       value: 
@@ -857,6 +861,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b87e1a4fb3ea6ba4b9aaaadbd8071df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &765773881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4429545374724517872, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
+  m_PrefabInstance: {fileID: 765773879}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6af8b976f280814d9f0ede0244759d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &803079559 stripped
@@ -1846,6 +1861,7 @@ GameObject:
   - component: {fileID: 1338490495}
   - component: {fileID: 1338490494}
   - component: {fileID: 1338490493}
+  - component: {fileID: 1338490496}
   m_Layer: 5
   m_Name: Draw
   m_TagString: Untagged
@@ -1989,6 +2005,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338490491}
   m_CullTransparentMesh: 1
+--- !u!114 &1338490496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338490491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45914e958a5a3d489228d46af813112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1528251119 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 468246, guid: 3f034e995143d7c48aceeca0168460c0, type: 3}
@@ -2359,6 +2387,10 @@ PrefabInstance:
     - target: {fileID: 7306689727929036935, guid: c4bacf760cc05fa49a3a210437d3f3a3, type: 3}
       propertyPath: m_Name
       value: PauseCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306689727929036938, guid: c4bacf760cc05fa49a3a210437d3f3a3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7306689727929036939, guid: c4bacf760cc05fa49a3a210437d3f3a3, type: 3}
       propertyPath: m_Pivot.x
