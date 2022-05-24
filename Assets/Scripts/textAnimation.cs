@@ -36,6 +36,7 @@ public class textAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // when time is over, time over string appears
         if(isTimeOver){
             appear();
         }
@@ -45,14 +46,18 @@ public class textAnimation : MonoBehaviour
         mesh = text.mesh;
         vertices = mesh.vertices;
 
+        // access text as a characterInfo array
         characters = text.textInfo.characterInfo;
 
-        //for(int i = 0; i < characters.Length; i++){
+        // if the index of characters exceeds the length of text, reset index
         if(k >= characters.Length){
             k = 0;
         }
+        // choose character from text
         TMP_CharacterInfo ch = characters[k];
 
+        // find vertices of current character
+        // update the position of current character
         for(int j = 0; j < vertices.Length; j++){
             if(ch.vertex_BL.position == vertices[j]){
                 Vector3 offset = wave(Time.time);
@@ -75,14 +80,17 @@ public class textAnimation : MonoBehaviour
                 vertices[j] = vertices[j] + offset;
             }
         }
-        //}      
 
+        // render the updated vertices
         mesh.vertices = vertices;
         text.canvasRenderer.SetMesh(mesh);
 
+        // timer for incrementing index
+        // only one character moves at a time
         if(timer >= threshold){
             timer = 0.0f;
             k++;
+            // when designated time expires, text disappears
             if(animationSeconds == 0.0f){
                 disappear();
             }
@@ -97,6 +105,7 @@ public class textAnimation : MonoBehaviour
         return new Vector3(0, amplitude * Mathf.Cos(time * period), 0);
     }
 
+    // enlarges the text in the middle
     public void appear(){
         if(gameObject.transform.localScale.x < scale.x){
             gameObject.transform.localScale += new Vector3(0.025f, 0.025f, 1.0f);
@@ -106,12 +115,14 @@ public class textAnimation : MonoBehaviour
         }
     }
 
+    // diminishes the text to 0
     public void disappear(){
         // transition occurs here
         transition.isEnter = true;
         gameObject.transform.localScale = new Vector3(0, 0, 0);
     }
 
+    // set the designated time for displaying animations
     public void setAnimationSeconds(float seconds){
         animationSeconds = seconds;
     }

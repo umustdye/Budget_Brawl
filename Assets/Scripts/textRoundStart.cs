@@ -35,6 +35,8 @@ public class textRoundStart : MonoBehaviour
             exit(Time.deltaTime);
         }
 
+        // wait timer after the text arrives in the middle of the screen
+        // applies to both ready and fight
         if(isWait){
             if(timer >= waitTime){
                 isWait = false;
@@ -50,11 +52,14 @@ public class textRoundStart : MonoBehaviour
         }
     }
 
+    // reset the position of text to out of the screen to the right
     public void disappear(){
         transform.localPosition = new Vector3(1350, 40, 0);
         speed = transform.localPosition.x / animationSeconds;
     }
 
+    // text moves from right to left
+    // stop when the text reaches middle of the screen
     public void appear(float time){
         if(transform.localPosition.x > 0){
             Vector3 speedVec = new Vector3(-speed, 0, 0);
@@ -66,6 +71,8 @@ public class textRoundStart : MonoBehaviour
         }   
     }
 
+    // text moves from right to left
+    // starts in the middle of the screen, and exits to the left side of the screen
     public void exit(float time){
         if(transform.localPosition.x > -1350){
             Vector3 speedVec = new Vector3(-speed, 0, 0);

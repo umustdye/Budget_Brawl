@@ -23,19 +23,17 @@ public class roundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // initialize scripts
         health = healthSpawner.GetComponent<ItemSpawner>();
         special = specialSpawner.GetComponent<ItemSpawner>();
 
         timer = roundTime.GetComponent<roundTimer>();
         timeoverAnim = timeover.GetComponent<textAnimation>();
 
-        initialize();
+        // reset the timer to round time
+        timer.reset();
 
         isRoundEnd = false;
-    }
-
-    void initialize(){
-        timer.reset();
     }
 
     // Update is called once per frame
