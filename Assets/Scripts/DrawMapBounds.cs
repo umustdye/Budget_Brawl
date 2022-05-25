@@ -7,13 +7,18 @@ public class DrawMapBounds : MonoBehaviour
     public CameraBounds cameraBound;
     public BlastZoneBounds blastZoneBound;
 
+    private Vector3 boundSize;
+
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(cameraBound.cameraBound.center, cameraBound.cameraBound.size);
+        boundSize =  new Vector3(cameraBound.halfXBounds * 2, cameraBound.halfYBounds * 2, cameraBound.halfZBounds * 2);
 
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(cameraBound.transform.position, boundSize);
+
+        boundSize = new Vector3(blastZoneBound.halfXBounds, blastZoneBound.halfYBounds, blastZoneBound.halfZBounds);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(blastZoneBound.blastZoneBounds.center, blastZoneBound.blastZoneBounds.size);
+        Gizmos.DrawWireCube(blastZoneBound.transform.position, boundSize);
     }
 
 }
