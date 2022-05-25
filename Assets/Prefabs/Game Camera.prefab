@@ -97,13 +97,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraBound: {fileID: 0}
-  playerList:
-  - {fileID: 0}
-  - {fileID: 0}
-  positionUpdateSpeed: 5
-  angleUpdateSpeed: 7
-  depthUpdateSpeed: 5
-  maxAngle: 7
-  minAngle: 3
-  maxDepth: -5
-  minDepth: -10
+  playerList: []
+  yOffset: 1
+  positionUpdateSpeed: 20
+  angleUpdateSpeed: 20
+  depthUpdateSpeed: 20
+  maxAngle: 15
+  minAngle: 0
+  maxDepth: -1
+  minDepth: -11
