@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class BlastPlayer : MonoBehaviour
 {
-    public BlastZoneBounds blastZone;
-    public SmashCam playerList;
+    private BlastZoneBounds blastZone;
 
-    private PlayerController playerController;
     private PlayerGameInfo playerGameInfo;
+    private List<GameObject> playerList;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        blastZone = GameObject.FindObjectOfType<BlastZoneBounds>();
+
+        playerGameInfo = FindObjectOfType<PlayerGameInfo>();
+        playerList = playerGameInfo.Players;
     }
 
     // Update is called once per frame
@@ -27,9 +29,9 @@ public class BlastPlayer : MonoBehaviour
     {
 
         
-        for (int i = 0; i < playerList.playerList.Count; ++i)
+        for (int i = 0; i < playerList.Count; ++i)
         {
-            GameObject player = playerList.playerList[i];
+            GameObject player = playerList[i];
             if(player.tag != "Player"){
                 continue;
             }
@@ -45,8 +47,7 @@ public class BlastPlayer : MonoBehaviour
     private void KillPlayer(GameObject player)
     {
         Rigidbody playerBody = player.GetComponent(typeof(Rigidbody)) as Rigidbody;
-        playerGameInfo = GameObject.FindObjectOfType<PlayerGameInfo>();
-        playerController = player.GetComponent(typeof(PlayerController)) as PlayerController;
+        PlayerController playerController = player.GetComponent(typeof(PlayerController)) as PlayerController;
 
         // Freezes player object in place at position of death
         playerBody.constraints = RigidbodyConstraints.FreezePosition;
