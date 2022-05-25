@@ -16,9 +16,8 @@ public class DrawMapBounds : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(cameraBound.transform.position, boundSize);
 
-        boundSize = new Vector3(blastZoneBound.halfXBounds, blastZoneBound.halfYBounds, blastZoneBound.halfZBounds);
+        boundSize = new Vector3(blastZoneBound.halfXBounds * 2, blastZoneBound.halfYBounds * 2, blastZoneBound.halfZBounds * 2);
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(blastZoneBound.transform.position, boundSize);
     }
-
 }
