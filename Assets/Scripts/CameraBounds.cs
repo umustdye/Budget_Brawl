@@ -17,7 +17,7 @@ public class CameraBounds : MonoBehaviour
     public Bounds cameraBound;
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
         // Get current position of level center
         Vector3 position = gameObject.transform.position;
