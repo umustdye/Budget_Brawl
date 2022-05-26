@@ -34,6 +34,10 @@ public class Hitbox : MonoBehaviour
 
         colliders = Physics.OverlapBox(hitbox.transform.position, hitboxSize, hitbox.transform.rotation, mask);
 
+        //TODO: create attack script that controls the amount of damage each attack does via
+        // a function that takes an int and is called through the animator event for each attack
+        // will use a switch block to select damage and will have a stupid about of public integers
+
         for (int i = 0; i < colliders.Length; ++i)
         {
             Collider hurtboxCollider = colliders[i];
