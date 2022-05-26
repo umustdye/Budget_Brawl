@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class Hitbox : MonoBehaviour
 {
     public LayerMask mask;
@@ -15,31 +16,33 @@ public class Hitbox : MonoBehaviour
     public Color hitboxCollision;
 
     private Vector3 hitboxSize;
-    // Start is called before the first frame update
+
+    public Collider[] colliders;
+
     void Start()
     {
-        // hitbox = GameObject.Find("Hitbox");
+        colliders = Physics.OverlapBox(hitbox.transform.position, hitboxSize);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (state == ColliderState.Inactive)
         {
             return;
         }
 
-        hitboxSize = hitbox.GetComponent<BoxCollider>().size;
-        Collider[] colliders = Physics.OverlapBox(hitbox.transform.position, hitboxSize, hitbox.transform.rotation, mask);
+        colliders = Physics.OverlapBox(hitbox.transform.position, hitboxSize, hitbox.transform.rotation, mask);
 
-        if (colliders.Length > 1)
+        for (int i = 0; i < colliders.Length; ++i)
         {
-            state = ColliderState.Colliding;
+            Collider hurtboxCollider = colliders[i];
+            Debug.Log("Hit: " + hurtboxCollider.name + i);
+            
         }
-        else
-        {
-            state = ColliderState.Active;
-        }
+
+        state = colliders.Length > 0 ? ColliderState.Colliding : ColliderState.Active;
+
     }
 
     public void StartCollisionDetection()
