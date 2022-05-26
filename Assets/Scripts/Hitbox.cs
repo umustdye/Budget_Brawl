@@ -46,6 +46,7 @@ public class Hitbox : MonoBehaviour
     {
         state = ColliderState.Active;
         hitbox.SetActive(true);
+        Debug.Log("Active Hitbox");
     }
 
     public void StopCollisionDetection()
