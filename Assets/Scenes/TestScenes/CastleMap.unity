@@ -574,6 +574,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2229060151305112321, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2229060151305112321, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.58
+      objectReference: {fileID: 0}
     - target: {fileID: 2331311427238379457, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
       propertyPath: m_Name
       value: MapBoundaries
@@ -624,15 +632,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4429545374724517872, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
       propertyPath: halfXBounds
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4429545374724517872, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
       propertyPath: halfYBounds
-      value: 10
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 4429545374724517872, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
       propertyPath: halfZBounds
-      value: 10
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4429545374724517872, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
+      propertyPath: blastZoneBounds.m_Center.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4429545374724517872, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
+      propertyPath: blastZoneBounds.m_Center.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4658068601300401469, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1019,7 +1035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
       propertyPath: minDepth
-      value: -9
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: 8961657002135243129, guid: 797afac78e7013149856a242247f2a57, type: 3}
       propertyPath: cameraBound
@@ -16019,6 +16035,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 64503702388275404, guid: 7ba2845aa97948a4b8bee3a62a942ab2, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 4e89d93a36721d245abff0d6a7500e05, type: 2}
     - target: {fileID: 108803245332219016, guid: 7ba2845aa97948a4b8bee3a62a942ab2, type: 3}
       propertyPath: m_Range
       value: 50
