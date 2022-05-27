@@ -387,11 +387,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7417531161993851542, guid: 53626127614e2434bafe24eaeaf27cb4, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1245
+      value: 1920.0001
       objectReference: {fileID: 0}
     - target: {fileID: 7417531161993851542, guid: 53626127614e2434bafe24eaeaf27cb4, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 700.31244
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417531162403673978, guid: 53626127614e2434bafe24eaeaf27cb4, type: 3}
+      propertyPath: m_text
+      value: "Created by UCR students: \nAndrew Bazua, San Lee, Heidi, Sebastian
+        Hall, Patrick Reilly\n\nMade with the Unity Engine\n\nAssets from:\nUnity
+        Asset Store, Soundbible, Mixamo, "
       objectReference: {fileID: 0}
     - target: {fileID: 7417531162708945342, guid: 53626127614e2434bafe24eaeaf27cb4, type: 3}
       propertyPath: m_Pivot.x
