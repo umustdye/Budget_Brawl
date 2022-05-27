@@ -77,6 +77,8 @@ public class pauseMenu : MonoBehaviour
     public void toMenu(){
         // TODO: move to the menu onClick()
         string menu = "Main_Menu";
+        Time.timeScale = 1.0f;
+        isPaused = false;
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(menu);
     }
 

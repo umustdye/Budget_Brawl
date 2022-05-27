@@ -58,6 +58,6 @@ public class GameInputScript : MonoBehaviour
     void OnSpecialAttack(InputValue val)
     {
         special_attack = val.isPressed;
-        Debug.Log("special attack: " + special_attack);
+        // Debug.Log("special attack: " + special_attack);
     }
 }

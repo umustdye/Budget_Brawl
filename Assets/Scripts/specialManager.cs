@@ -10,7 +10,7 @@ public class specialManager : MonoBehaviour
     float timer = 0.0f;
     float specialDuration = 20.0f;
 
-    bool specialCharged = false;
+    private bool specialCharged = false;
 
     // Start is called before the first frame update
     void Start()
