@@ -15,7 +15,7 @@ public class PlayerGameInfo : MonoBehaviour
     public GameObject player2;
 
     private linkPlayerHealth p1Health;
-    private linkPlayerHealth p2Health
+    private linkPlayerHealth p2Health;
     public Stonks player1Stocks;
     public Stonks player2Stocks;
     public static int playerLives = 4;
