@@ -44,7 +44,7 @@ public class roundManager : MonoBehaviour
     {
         // if ready/fight animation ends
         // restart the timer
-        if(roundStartAnim.isAnimationEnd){
+        if(roundStartAnim != null && roundStartAnim.isAnimationEnd){
             // ACTIONS: when round starts
             timer.restart();
             health.restart();

@@ -19,7 +19,7 @@ public class ItemSpawner : MonoBehaviour
 
     private float timer = 0.0f;
     // may be fixed as the origin changes
-    private float fixedZ = -1f;
+    private float fixedZ = 0.0f;
     // Start is called before the first frame update
     void Start()
     {

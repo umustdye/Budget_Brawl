@@ -62,6 +62,9 @@ public class textRoundStart : textParent
         if(transform.localPosition.x > 0){
             Vector3 speedVec = new Vector3(-speed, 0, 0);
             transform.Translate(speedVec * time);
+            if(transform.localPosition.x < 0){
+                transform.localPosition = new Vector3(0,transform.localPosition.y,transform.localPosition.z);
+            }
         }
         else{
             isEnter = false;
