@@ -12,6 +12,7 @@ public class SmashCam: MonoBehaviour
     // Grab the bounds of the camera
     public CameraBounds cameraBound;
 
+    private PlayerGameInfo playerGameInfo;
     // Holds the list of players in a map
     public List<GameObject> playerList;
 
@@ -36,6 +37,8 @@ public class SmashCam: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerGameInfo = FindObjectOfType<PlayerGameInfo>();
+        playerList = playerGameInfo.Players;
         // Add center of the stage to calculations
         playerList.Add(cameraBound.gameObject);
     }

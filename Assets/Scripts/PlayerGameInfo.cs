@@ -16,9 +16,11 @@ public class PlayerGameInfo : MonoBehaviour
 
     private linkPlayerHealth p1Health;
     private linkPlayerHealth p2Health;
-
-    public int player1Lives = 3;
-    public int player2Lives = 3;
+    public Stonks player1Stocks;
+    public Stonks player2Stocks;
+    public static int playerLives = 4;
+    public int player1Lives;
+    public int player2Lives;
 
     public int roundTime;
 
@@ -41,12 +43,17 @@ public class PlayerGameInfo : MonoBehaviour
         p1Health.refillFull();
         p2Health.refillFull();
 
-        player1Lives = 3;
-        player2Lives = 3;
+        player1Lives = playerLives;
+        player2Lives = playerLives;
         player1Win = false;
         player2Win = false;
         player1Dead = false;
         player2Dead = false;
+
+        player1Stocks.MarketOpen();
+        player2Stocks.MarketOpen();
+        player1Lives = playerLives;
+        player2Lives = playerLives;
 
     }
 
