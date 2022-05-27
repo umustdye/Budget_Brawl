@@ -23,7 +23,7 @@ public class pauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         isPaused = false;
 
-        volumeSlider.GetComponent<Slider>().value = 0.3f;
+        volumeSlider.GetComponent<Slider>().value = 0.05f;
         changeVolume();
     }
 
