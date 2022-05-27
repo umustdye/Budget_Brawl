@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class roundTimer : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class roundTimer : MonoBehaviour
     // change maxTime will actually change the round time
     public float maxTime = 180.0f;
     // set it to textUI timertext
-    public Text timerText;
+    public TMP_Text timerText;
     private bool isRunning;
     // Start is called before the first frame update
     void Start()
@@ -38,10 +39,10 @@ public class roundTimer : MonoBehaviour
             if((int)roundTime <= 10){
                 if((int)roundTime % 2 == 0){
                     // Debug.Log("red");
-                    timerText.color = Color.red;
+                    timerText.color = new Color(255, 134, 0, 255);
                 }
                 else{
-                    timerText.color = Color.black;
+                    timerText.color = Color.white;
                 }
             }
         }
@@ -59,7 +60,7 @@ public class roundTimer : MonoBehaviour
     }
 
     public void reset(){
-        timerText.color = Color.black;
+        timerText.color = Color.white;
         roundTime = maxTime;
         displayTime();
     }
