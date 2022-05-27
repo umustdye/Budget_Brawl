@@ -963,11 +963,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6676111406493361780, guid: e9ebcaea937b54d4da43b1a46a6f4662, type: 3}
       propertyPath: maxSpawnTime
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6676111406493361780, guid: e9ebcaea937b54d4da43b1a46a6f4662, type: 3}
       propertyPath: minSpawnTime
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6676111406493361782, guid: e9ebcaea937b54d4da43b1a46a6f4662, type: 3}
       propertyPath: m_RootOrder
