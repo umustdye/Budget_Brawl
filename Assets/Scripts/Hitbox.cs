@@ -18,10 +18,12 @@ public class Hitbox : MonoBehaviour
     private Vector3 hitboxSize;
 
     public Collider[] colliders;
+    public Attack attack;
 
     void Start()
     {
         colliders = Physics.OverlapBox(hitbox.transform.position, hitboxSize);
+        attack = GetComponentInChildren(typeof(Attack), true) as Attack;
     }
 
     // Update is called once per frame
@@ -42,6 +44,7 @@ public class Hitbox : MonoBehaviour
         {
             Collider hurtboxCollider = colliders[i];
             Debug.Log("Hit: " + hurtboxCollider.name + i);
+            attack.Attack_Player(hurtboxCollider);
             
         }
 
