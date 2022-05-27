@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: c6f67253c2aa9424d9f517e2eb1b5cbf
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerController: {instanceID: 0}
+  - characterAudioPlayer: {instanceID: 0}
+  - Blocking_Sound: {fileID: 8300000, guid: 3fd639473fc13be42b07df2755be05ab, type: 3}
+  - Punch_Impact_Sound: {fileID: 8300000, guid: 4f8fbafe2b8651942bdbc006e659b696, type: 3}
+  - Punch_Whoosh_Sound: {fileID: 8300000, guid: f0d9d714e04c7604388cd8e938c6f504, type: 3}
+  - Kick_Whoosh_Sound: {fileID: 8300000, guid: 6bbbb367e579eed45bad8799fc603898, type: 3}
+  - Kick_Impact_Sound: {fileID: 8300000, guid: 2f68415471fa4354eb9d9704f45ac951, type: 3}
+  - Jump_Up_Sound: {fileID: 8300000, guid: ba7e1a28f3073484a83be000fb673418, type: 3}
+  - Jump_Down_Sound: {fileID: 8300000, guid: aac7c2e920f305a4b9125e6399596c82, type: 3}
+  - Jump_Whoosh_Sound: {fileID: 8300000, guid: f958282e5fa2e8d4599de2431096cef9, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

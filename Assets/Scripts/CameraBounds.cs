@@ -9,15 +9,15 @@ public class CameraBounds : MonoBehaviour
 
     // Defines the size of the bounding box that a player can be in
     // before the camera stops following
-    public float halfXBounds = 20f;
-    public float halfYBounds = 15f;
+    public float halfXBounds;
+    public float halfYBounds;
     // Not used, but may be useful at some point
-    public float halfZBounds = 15f;
+    public float halfZBounds;
 
     public Bounds cameraBound;
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
         // Get current position of level center
         Vector3 position = gameObject.transform.position;

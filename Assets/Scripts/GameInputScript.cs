@@ -16,41 +16,48 @@ public class GameInputScript : MonoBehaviour
     public bool punch = false;
     public bool kick = false;
     public bool block = false;
+    public bool special_attack = false;
 
     // Input Action Message Handlers
     void OnDirection(InputValue val)
     {
         player_direction = val.Get<float>();
-        Debug.Log("player_direction: " + player_direction);
+        // Debug.Log("player_direction: " + player_direction);
     }
 
     void OnSprint(InputValue val)
     {
         sprint = val.isPressed;
-        Debug.Log("sprint: " + sprint);
+        // Debug.Log("sprint: " + sprint);
     }
 
     void OnJump(InputValue val)
     {
         jump = val.isPressed;
-        Debug.Log("jump: " + jump);
+        // Debug.Log("jump: " + jump);
     }
 
     void OnPunch(InputValue val)
     {
         punch = val.isPressed;
-        Debug.Log("punch: " + punch);
+        // Debug.Log("punch: " + punch);
     }
 
     void OnKick(InputValue val)
     {
         kick = val.isPressed;
-        Debug.Log("kick: " + kick);
+        // Debug.Log("kick: " + kick);
     }
 
     void OnBlock(InputValue val)
     {
         block = val.Get<float>() != 0;
-        Debug.Log("block: " + block);
+        // Debug.Log("block: " + block);
+    }
+
+    void OnSpecialAttack(InputValue val)
+    {
+        special_attack = val.isPressed;
+        Debug.Log("special attack: " + special_attack);
     }
 }

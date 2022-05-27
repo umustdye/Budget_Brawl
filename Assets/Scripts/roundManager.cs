@@ -7,155 +7,85 @@ public class roundManager : MonoBehaviour
 {
     // set it to round manager gameobject
     public GameObject roundTime;
-    // automatically set it to its child
-    public Text timeoverText;
+    public GameObject healthSpawner;
+    public GameObject specialSpawner;
 
+    private ItemSpawner health;
+    private ItemSpawner special;
+
+    public GameObject roundStart;
+    public GameObject timeover;
+    
+    private textParent roundStartAnim;
+    private textParent timeoverAnim;
     private roundTimer timer;
-    private bool isRoundEnd;
-    private bool isAnimationRunning;
-    private bool transitionToNextRound;
-    private bool waitForTransition;
+    public bool isRoundEnd;
     public int roundNum = 3;
 
-    private float animationSpeed = 0.3f;
-    private string end = "TIME OVER";
-    private float animationTimer = 0.0f;
-    private int index = 0;
-    private string placeholder = "";
     // Start is called before the first frame update
     void Start()
     {
+        // initialize scripts
+        health = healthSpawner.GetComponent<ItemSpawner>();
+        special = specialSpawner.GetComponent<ItemSpawner>();
+
         timer = roundTime.GetComponent<roundTimer>();
+        roundStartAnim = roundStart.GetComponent<textRoundStart>();
+        timeoverAnim = timeover.GetComponent<textAnimation>();
+
+        // reset the timer to round time
+        timer.reset();
+
         isRoundEnd = false;
-        isAnimationRunning = false;
-        transitionToNextRound = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // if ready/fight animation ends
+        // restart the timer
+        if(roundStartAnim.isAnimationEnd){
+            // ACTIONS: when round starts
+            timer.restart();
+            health.restart();
+            special.restart();
+            roundStartAnim.isAnimationEnd = false;
+        }
         if(isRoundEnd){
             roundEnd();
         }
-
-        if(isAnimationRunning){
-            animateTimeOver();
-        }
-
-        if(waitForTransition){
-            waitTransition();
-        }
-
-        if(transitionToNextRound){
-            roundTransition();
-        }
-    }
-
-    public void setRoundEnd(bool state){
-        isRoundEnd = state;
-    }
-
-    void roundTransition(){
-        // transition animations? another waiting time, dispose "TIME OVER"
-        // respawn and position all characters
-        // restart the timer
-        placeholder = "";
-        waitForTransition = false;
-
-        timer.restart();
-        transitionToNextRound = false;
     }
 
     void roundEnd(){
-        // when the timer runs out, this function is called once
-        if(!timer.isTimerRunning()){
-            // pause() the whole game(maybe gameManager?), character movements are stopped
-            // after the time over animation, goes to the next round or end the game
-            Debug.Log("Round Ended");
-            if(roundNum == 0){
-                // end the game and move to the result screen
-                Debug.Log("Game Ended");
-                return;
-            }
-            else{
-                roundNum--;
-            }
-            
-            // play round ending animation
-            isAnimationRunning = true;
+        // pause() the whole game(maybe gameManager?), character movements are stopped
+        // after the time over animation, goes to the next round or end the game
+        if(roundNum > 0){
+            roundNum--;
         }
+        if(roundNum <= 0){
+            // end the game and move to the result screen
+            Debug.Log("Game Ended");
+            isRoundEnd = false;
 
-        setRoundEnd(false);
-    }
-
-    void animateTimeOver(){
-        // when all words are printed on the screen
-        if(index >= end.Length){
-            // stop the animation
-            isAnimationRunning = false;
-            // transition to the next round, but have to wait for seconds
-            waitForTransition = true;
-            // reset the index: pointer to word position, and animationTimer: time that waits to print an alphabet
-            index = 0;
-            animationTimer = 0;
             return;
         }
-        // when timer exceeds animationSpeed
-        if(animationTimer > animationSpeed){
-            // add character to placeholder
-            placeholder += end[index];
-            // print the string on the placeholder: substring of end="TIME OVER"
-            timeoverText.text = placeholder;
-            // increment index
-            index++;
-            //reset animation Timer
-            animationTimer = 0.0f;
-        }
-        // add time
-        animationTimer += Time.deltaTime;
-    }
+        
+        // ACTIONS: when round ends
+        // add transition logics:
+        //      reset the timer
+        //      play time over animation
+        //      ready for ready/fight animation
+        //      clean items on the stage
+        timeoverAnim.setAnimationSeconds(4.0f);
+        timeoverAnim.isAnimationEnd = false;
+        timeoverAnim.isEnter = true;
+        timer.reset();
 
-    float maxSeconds;
-    float currTimer = 0.0f;
-    bool waitEnd;
-    // reset the wait timer and set the maximum time to wait
-    void setWaitTime(float seconds){
-        waitEnd = false;
-        maxSeconds = seconds;
-        // through player manager, disable all inputs of players while waiting
-        // maybe play lose animations for characters and win animation for character with the highest number of lives
-    }
-    // run until desgnated time is reached, when timer runs out assert waitEnd to signal
-    void waitTime(){
-        if(currTimer < maxSeconds){
-            currTimer += Time.deltaTime;
-        }
-        else{
-            currTimer = 0.0f;
-            waitEnd = true;
-        }
-    }
-    // set wait time of 9 seconds, wait; then, transition to the next round
-    void waitTransition(){
-        setWaitTime(9);
-        waitTime();
-        if(waitEnd){
-            transitionToNextRound = true;
-            waitEnd = false;
-        }
-        else{
-            if(currTimer < 4){
-                timeoverText.text = placeholder;
-            }
-            else if(4 <= currTimer && currTimer < 6){
-                timeoverText.text = "READY!";
-            }
-            else if(6 <= currTimer && currTimer < 8){
-                timeoverText.text = "FIGHT!";
-            }
-            else{
-                timeoverText.text = "";
-            }
-        }
+        health.reset();
+        health.emptyChild();
+        special.reset();
+        special.emptyChild();
+
+        isRoundEnd = false;
     }
 }

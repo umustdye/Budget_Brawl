@@ -3,7 +3,14 @@ guid: 09cd0a4cca98e0f49a975f972aefd513
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - fightingAudioPlayer: {instanceID: 0}
+  - Blocking_Sound: {instanceID: 0}
+  - Punch_Impact_Sound: {instanceID: 0}
+  - Punch_Whoosh_Sound: {instanceID: 0}
+  - Kick_Whoosh_Sound: {instanceID: 0}
+  - Kick_Impact_Sound: {instanceID: 0}
+  - Jump_Whoosh_Sound: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
