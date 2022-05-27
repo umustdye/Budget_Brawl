@@ -2022,23 +2022,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7306689726749917103, guid: c4bacf760cc05fa49a3a210437d3f3a3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7306689726749917103, guid: c4bacf760cc05fa49a3a210437d3f3a3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7306689726749917103, guid: c4bacf760cc05fa49a3a210437d3f3a3, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7306689727663807486, guid: c4bacf760cc05fa49a3a210437d3f3a3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7306689727663807486, guid: c4bacf760cc05fa49a3a210437d3f3a3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7306689727929036935, guid: c4bacf760cc05fa49a3a210437d3f3a3, type: 3}
       propertyPath: m_Name
@@ -2046,7 +2046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7306689727929036935, guid: c4bacf760cc05fa49a3a210437d3f3a3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7306689727929036938, guid: c4bacf760cc05fa49a3a210437d3f3a3, type: 3}
       propertyPath: m_SortingOrder
