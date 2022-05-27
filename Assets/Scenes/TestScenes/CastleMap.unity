@@ -505,11 +505,11 @@ PrefabInstance:
     - target: {fileID: 446185614455010942, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: Players.Array.data[0]
       value: 
-      objectReference: {fileID: 8894405752842355301, guid: 0ac81077cf62c8044ab69f6326d3fed5, type: 3}
+      objectReference: {fileID: 1995468457}
     - target: {fileID: 446185614455010942, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: Players.Array.data[1]
       value: 
-      objectReference: {fileID: 7171833892928136833, guid: 96dffa4acf4262f49954d07ade8d448f, type: 3}
+      objectReference: {fileID: 2024695761}
     - target: {fileID: 446185614455010942, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: Players.Array.data[2]
       value: 
