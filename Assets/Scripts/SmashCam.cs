@@ -40,7 +40,7 @@ public class SmashCam: MonoBehaviour
         playerGameInfo = FindObjectOfType<PlayerGameInfo>();
         playerList = playerGameInfo.Players;
         // Add center of the stage to calculations
-        playerList.Add(cameraBound.gameObject);
+        //playerList.Add(cameraBound.gameObject);
     }
 
 
