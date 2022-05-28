@@ -6,8 +6,8 @@ public class Respawn : MonoBehaviour
 {
 
     public float respawnTimer;
-    public GameObject spawnPoint;
-
+    public GameObject spawnManager;
+    public List<GameObject> spawnPoints;
     private PlayerGameInfo playerGameInfo;
     private List<GameObject> players;
     private bool isDead;
@@ -19,6 +19,8 @@ public class Respawn : MonoBehaviour
     {
         playerGameInfo = GameObject.FindObjectOfType<PlayerGameInfo>();
         players = playerGameInfo.Players;
+        spawnManager = GameObject.Find("RespawnPoints");
+        BuildSpawnPointList();
     }
 
     // Update is called once per frame
@@ -35,7 +37,7 @@ public class Respawn : MonoBehaviour
                 if (!player.GetComponent<linkPlayerHealth>().isRespawning)
                 {
                     player.GetComponent<linkPlayerHealth>().isRespawning = true;
-                    respawnCoroutine = RespawnPlayer(player);
+                    respawnCoroutine = RespawnPlayer(player, i);
                     Debug.Log("Dead Player");
                     StartCoroutine(respawnCoroutine);
 
@@ -45,7 +47,7 @@ public class Respawn : MonoBehaviour
         }
     }
 
-    IEnumerator RespawnPlayer(GameObject player)
+    IEnumerator RespawnPlayer(GameObject player, int playerIndex)
     {
         ++timecount;
         Rigidbody playerBody = player.GetComponent(typeof(Rigidbody)) as Rigidbody;
@@ -53,7 +55,7 @@ public class Respawn : MonoBehaviour
 
         yield return new WaitForSeconds(respawnTimer);
         
-        player.transform.position = spawnPoint.transform.position;
+        player.transform.position = spawnPoints[playerIndex].transform.position;
         player.transform.localScale = new Vector3(1, 1, 1);
 
         // Unfreeze player
@@ -67,6 +69,14 @@ public class Respawn : MonoBehaviour
 
         player.GetComponent<linkPlayerHealth>().isRespawning = false;
         Debug.Log("Visited: " + timecount + " times");
+    }
+
+    private void BuildSpawnPointList()
+    {
+        foreach (Transform child in spawnManager.transform)
+        {
+            spawnPoints.Add(child.gameObject);
+        }
     }
 
 }
