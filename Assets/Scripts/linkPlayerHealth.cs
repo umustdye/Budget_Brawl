@@ -10,6 +10,7 @@ public class linkPlayerHealth : MonoBehaviour
     //determining low health
     public bool lowHealth;
     public bool dead;
+    public bool isRespawning;
     //bool revived;
     private int lowHealthFactor = 2;
 

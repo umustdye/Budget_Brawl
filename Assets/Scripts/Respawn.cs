@@ -11,7 +11,9 @@ public class Respawn : MonoBehaviour
     private PlayerGameInfo playerGameInfo;
     private List<GameObject> players;
     private bool isDead;
+    private float timecount = 0;
 
+    private IEnumerator respawnCoroutine;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,36 +24,35 @@ public class Respawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject player;
         for (int i = 0; i < players.Count; ++i)
         {
-            
-            GameObject player = players[i];
-            if (player.CompareTag("Player"))
+            player = players[i];
+            isDead = player.GetComponent<linkPlayerHealth>().dead;
+
+            if (isDead)
             {
-                isDead = player.GetComponent<linkPlayerHealth>().dead;
-                if (isDead)
+                if (!player.GetComponent<linkPlayerHealth>().isRespawning)
                 {
-                    // Debug.Log("Dead Player");
-                    StartCoroutine(RespawnPlayer(player));
-                    Debug.Log("Hi");
-                    StopCoroutine(RespawnPlayer(player));
-                    continue;
+                    player.GetComponent<linkPlayerHealth>().isRespawning = true;
+                    respawnCoroutine = RespawnPlayer(player);
+                    Debug.Log("Dead Player");
+                    StartCoroutine(respawnCoroutine);
+
                 }
             }
-            else
-            {
-                continue;
-            }
+
         }
     }
 
     IEnumerator RespawnPlayer(GameObject player)
     {
+        ++timecount;
         Rigidbody playerBody = player.GetComponent(typeof(Rigidbody)) as Rigidbody;
         PlayerController playerController = player.GetComponent(typeof(PlayerController)) as PlayerController;
 
         yield return new WaitForSeconds(respawnTimer);
-
+        
         player.transform.position = spawnPoint.transform.position;
         player.transform.localScale = new Vector3(1, 1, 1);
 
@@ -61,7 +62,11 @@ public class Respawn : MonoBehaviour
         // Allow player movement
         playerController.enabled = true;
 
+        // automatically sets dead to false
         player.GetComponent<linkPlayerHealth>().refillFull();
+
+        player.GetComponent<linkPlayerHealth>().isRespawning = false;
+        Debug.Log("Visited: " + timecount + " times");
     }
 
 }
