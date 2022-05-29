@@ -43,8 +43,6 @@ public class PlayerGameInfo : MonoBehaviour
         p1Health.refillFull();
         p2Health.refillFull();
 
-        player1Lives = playerLives;
-        player2Lives = playerLives;
         player1Win = false;
         player2Win = false;
         player1Dead = false;

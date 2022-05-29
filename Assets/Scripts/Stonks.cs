@@ -11,7 +11,7 @@ public class Stonks : MonoBehaviour
         for (int i = 0; i < PlayerGameInfo.playerLives; ++i)
         {
             Transform child = gameObject.transform.GetChild(i);
-            Debug.Log("Child Name: " + child.name);
+            // Debug.Log("Child Name: " + child.name);
             child.gameObject.SetActive(true);
         }
     }
