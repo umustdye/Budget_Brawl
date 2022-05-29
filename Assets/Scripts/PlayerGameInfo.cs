@@ -40,21 +40,7 @@ public class PlayerGameInfo : MonoBehaviour
         p1Health = player1.GetComponent<linkPlayerHealth>();
         p2Health = player2.GetComponent<linkPlayerHealth>();
 
-        p1Health.refillFull();
-        p2Health.refillFull();
-
-        player1Lives = playerLives;
-        player2Lives = playerLives;
-        player1Win = false;
-        player2Win = false;
-        player1Dead = false;
-        player2Dead = false;
-
-        player1Stocks.MarketOpen();
-        player2Stocks.MarketOpen();
-        player1Lives = playerLives;
-        player2Lives = playerLives;
-
+        reset();
     }
 
     // Update is called once per frame
@@ -86,5 +72,45 @@ public class PlayerGameInfo : MonoBehaviour
                 //Respawn player 2
             }
         }
+    }
+
+    // evaluate the winner when the timer runs out
+    public void evaluate(){
+        if(player1Lives > player2Lives){
+            player1Win = true;
+        }
+        else if(player1Lives < player2Lives){
+            player2Win = true;
+        }
+        else{
+            if(p1Health.getHP() > p2Health.getHP()){
+                player1Win = true;
+            }
+            else if(p1Health.getHP() < p2Health.getHP()){
+                player2Win = true;
+            }
+            else{
+                // complete draw if possible, lol
+                player1Win = false;
+                player2Win = false;
+            }
+        }
+    }
+
+    public void reset(){
+        p1Health.refillFull();
+        p2Health.refillFull();
+
+        player1Lives = playerLives;
+        player2Lives = playerLives;
+        player1Win = false;
+        player2Win = false;
+        player1Dead = false;
+        player2Dead = false;
+
+        player1Stocks.MarketOpen();
+        player2Stocks.MarketOpen();
+        player1Lives = playerLives;
+        player2Lives = playerLives;
     }
 }
