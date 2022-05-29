@@ -1217,8 +1217,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnTimer: 3.5
-  spawnManager: {fileID: 0}
-  spawnPoints: []
+  P1SpawnPoint: {x: -2, y: 6.5, z: 0}
+  P2SpawnPoint: {x: 2, y: 6.5, z: 0}
+  P3SpawnPoint: {x: -6, y: 6.5, z: 0}
+  P4SpawnPoint: {x: 6, y: 6.5, z: 0}
+  spawnPointPositions: []
 --- !u!4 &1017049763 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4569837669056003341, guid: e13217e6925167645b271cd7eb15e099, type: 3}
