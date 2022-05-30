@@ -20,6 +20,10 @@ public class changeText : MonoBehaviour
         
     }
 
+    public void roundOver(){
+        text.text = "Round Over";
+    }
+
     public void draw(){
         text.text = "Draw";
     }

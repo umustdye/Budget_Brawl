@@ -9,6 +9,7 @@ public class PlayerGameInfo : MonoBehaviour
     //TODO: add integration for player lives/stocks
     //TODO: potentially add integration for roundtime/ number of rounds
     //TODO: link with blast/death animation
+    public roundManager roundTracker;
     public List<GameObject> Players;
 
     public GameObject player1;
@@ -46,30 +47,34 @@ public class PlayerGameInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (p1Health.getHP() <= 0)
-        {
-            player1Dead = true;
+        if(!player1Win && !player2Win){
+            if (p1Health.getHP() <= 0)
+            {
+                player1Dead = true;
 
-            if (player1Lives <= 0)
-            {
-                player2Win = true;
+                if (player1Lives <= 0)
+                {
+                    player2Win = true;
+                    roundTracker.isRoundEnd = true;
+                }
+                else
+                {
+                    //Respawn player 1
+                }
             }
-            else
+            else if (p2Health.getHP() <= 0)
             {
-                //Respawn player 1
-            }
-        }
-        else if (p2Health.getHP() <= 0)
-        {
-            player2Dead = true;
+                player2Dead = true;
 
-            if (player1Lives <= 0)
-            {
-                player1Win = true;
-            }
-            else
-            {
-                //Respawn player 2
+                if (player1Lives <= 0)
+                {
+                    player1Win = true;
+                    roundTracker.isRoundEnd = true;
+                }
+                else
+                {
+                    //Respawn player 2
+                }
             }
         }
     }

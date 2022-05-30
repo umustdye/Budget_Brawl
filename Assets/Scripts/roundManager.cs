@@ -7,6 +7,7 @@ public class roundManager : MonoBehaviour
 {
     // set it to round manager gameobject
     public GameObject roundTime;
+    public GameObject roundover;
     public GameObject healthSpawner;
     public GameObject specialSpawner;
     public GameObject playerManager;
@@ -19,6 +20,7 @@ public class roundManager : MonoBehaviour
     public GameObject gameover;
     
     private textParent roundStartAnim;
+    private textParent roundoverAnim;
     private textParent timeoverAnim;
     private textParent gameoverAnim;
     private roundTimer timer;
@@ -36,6 +38,7 @@ public class roundManager : MonoBehaviour
         roundStartAnim = roundStart.GetComponent<textRoundStart>();
         timeoverAnim = timeover.GetComponent<textAnimation>();
         gameoverAnim = gameover.GetComponent<textAnimation>();
+        roundoverAnim = roundover.GetComponent<textAnimation>();
 
         // reset the timer to round time
         timer.reset();
@@ -87,12 +90,20 @@ public class roundManager : MonoBehaviour
         //      ready for ready/fight animation
         //      clean items on the stage
         //      evaluate the winner
+        if(!timer.isTimerRunning()){
+            timeoverAnim.setAnimationSeconds(4.0f);
+            timeoverAnim.isAnimationEnd = false;
+            timeoverAnim.isEnter = true;
+        }
+        else{
+            // it is likely that the round ended, but timer is still running
+            roundoverAnim.setAnimationSeconds(4.0f);
+            roundoverAnim.isAnimationEnd = false;
+            roundoverAnim.isEnter = true;
+        }
 
-        timeoverAnim.setAnimationSeconds(4.0f);
-        timeoverAnim.isAnimationEnd = false;
-        timeoverAnim.isEnter = true;
+        timer.stop();
         timer.reset();
-
         health.reset();
         health.emptyChild();
         special.reset();
