@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06275862d3e77c544ad7b8aac5258dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnTimer: 0
+  respawnTimer: 2
   P1SpawnPoint: {x: -4.5, y: 3.41, z: -0.232}
   P2SpawnPoint: {x: -2.5, y: 3.41, z: -0.232}
   P3SpawnPoint: {x: -0.5, y: 3.41, z: -0.232}
