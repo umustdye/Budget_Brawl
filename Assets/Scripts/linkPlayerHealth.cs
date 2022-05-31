@@ -22,6 +22,7 @@ public class linkPlayerHealth : MonoBehaviour
     {
         currentHP = maxHP;
         healthBar.SetMaxHealth(maxHP);
+        isRespawning = false;
     }
 
     // Update is called once per frame

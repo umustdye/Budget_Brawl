@@ -7,6 +7,8 @@ public class CombatScript : MonoBehaviour
     // Components
     private GameInputScript input;
     private PlayerController controller;
+    //check if the player collected a special attack item
+    private specialManager special_attack_item;
 
     // Fighting
     [Header("Fighting")]
@@ -30,6 +32,7 @@ public class CombatScript : MonoBehaviour
     {
         input = GetComponent<GameInputScript>();
         controller = GetComponent<PlayerController>();
+        special_attack_item = GetComponent<specialManager>();
     }
 
     // Update is called once per frame
@@ -83,7 +86,7 @@ public class CombatScript : MonoBehaviour
             is_kicking = !(is_blocking || is_punching || is_special_attack);
             input.kick = false;
         }
-        if(input.special_attack)
+        if(input.special_attack && special_attack_item.isSpecialCharged())
         {
             is_special_attack = !(is_blocking || is_punching || is_kicking);
             input.special_attack = false;
