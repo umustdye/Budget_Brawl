@@ -5,6 +5,7 @@ using TMPro;
 
 public class textRoundStart : textParent
 {
+    public PlayerGameInfo playerManager;
     TMP_Text text;
     float speed = 30.0f;
     float animationSeconds = 0.5f;
@@ -83,6 +84,7 @@ public class textRoundStart : textParent
             isExit = false;
             if(isReady){
                 fight();
+                playerManager.reset();
                 isEnter = true;
                 isReady = false;
             }

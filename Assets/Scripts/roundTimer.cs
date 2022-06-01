@@ -47,7 +47,6 @@ public class roundTimer : MonoBehaviour
             }
         }
         else{
-            // round ends, no logic yet
             manager.isRoundEnd = true;
             roundTime = 0;
             isRunning = false;
@@ -71,6 +70,10 @@ public class roundTimer : MonoBehaviour
 
     int getSeconds(){
         return (int)(roundTime % 60);
+    }
+
+    public void stop(){
+        isRunning = false;
     }
 
     public bool isTimerRunning(){

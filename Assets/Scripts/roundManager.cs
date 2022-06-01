@@ -7,17 +7,22 @@ public class roundManager : MonoBehaviour
 {
     // set it to round manager gameobject
     public GameObject roundTime;
+    public GameObject roundover;
     public GameObject healthSpawner;
     public GameObject specialSpawner;
+    public GameObject playerManager;
 
     private ItemSpawner health;
     private ItemSpawner special;
 
     public GameObject roundStart;
     public GameObject timeover;
+    public GameObject gameover;
     
     private textParent roundStartAnim;
+    private textParent roundoverAnim;
     private textParent timeoverAnim;
+    private textParent gameoverAnim;
     private roundTimer timer;
     public bool isRoundEnd;
     public int roundNum = 3;
@@ -32,6 +37,8 @@ public class roundManager : MonoBehaviour
         timer = roundTime.GetComponent<roundTimer>();
         roundStartAnim = roundStart.GetComponent<textRoundStart>();
         timeoverAnim = timeover.GetComponent<textAnimation>();
+        gameoverAnim = gameover.GetComponent<textAnimation>();
+        roundoverAnim = roundover.GetComponent<textAnimation>();
 
         // reset the timer to round time
         timer.reset();
@@ -59,6 +66,9 @@ public class roundManager : MonoBehaviour
     void roundEnd(){
         // pause() the whole game(maybe gameManager?), character movements are stopped
         // after the time over animation, goes to the next round or end the game
+        PlayerGameInfo info = playerManager.GetComponent<PlayerGameInfo>();
+        info.evaluate();
+
         if(roundNum > 0){
             roundNum--;
         }
@@ -66,6 +76,9 @@ public class roundManager : MonoBehaviour
             // end the game and move to the result screen
             Debug.Log("Game Ended");
             isRoundEnd = false;
+            gameoverAnim.setAnimationSeconds(4.0f);
+            gameoverAnim.isAnimationEnd = false;
+            gameoverAnim.isEnter = true;
 
             return;
         }
@@ -76,16 +89,25 @@ public class roundManager : MonoBehaviour
         //      play time over animation
         //      ready for ready/fight animation
         //      clean items on the stage
-        timeoverAnim.setAnimationSeconds(4.0f);
-        timeoverAnim.isAnimationEnd = false;
-        timeoverAnim.isEnter = true;
-        timer.reset();
+        //      evaluate the winner
+        if(!timer.isTimerRunning()){
+            timeoverAnim.setAnimationSeconds(4.0f);
+            timeoverAnim.isAnimationEnd = false;
+            timeoverAnim.isEnter = true;
+        }
+        else{
+            // it is likely that the round ended, but timer is still running
+            roundoverAnim.setAnimationSeconds(4.0f);
+            roundoverAnim.isAnimationEnd = false;
+            roundoverAnim.isEnter = true;
+        }
 
+        timer.stop();
+        timer.reset();
         health.reset();
         health.emptyChild();
         special.reset();
         special.emptyChild();
-
         isRoundEnd = false;
     }
 }

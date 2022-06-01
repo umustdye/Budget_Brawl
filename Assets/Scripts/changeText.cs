@@ -6,6 +6,7 @@ using TMPro;
 public class changeText : MonoBehaviour
 {
     TMP_Text text;
+    public PlayerGameInfo playerManager;
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +20,24 @@ public class changeText : MonoBehaviour
         
     }
 
+    public void roundOver(){
+        text.text = "Round Over";
+    }
+
     public void draw(){
         text.text = "Draw";
     }
 
     public void win(){
-
-        text.text = "Wins!";
+        if(playerManager.player1Win){
+            text.text = "Player 1 Wins!";
+        }
+        else if(playerManager.player2Win){
+            text.text = "Player 2 Wins!";
+        }
+        else{
+            draw();
+        }
+        
     }
 }

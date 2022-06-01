@@ -182,7 +182,6 @@ MonoBehaviour:
   isEnter: 0
   isAnimationEnd: 1
   next: {fileID: 6872159198087426049}
-  transition: {fileID: 0}
   amplitude: 31.415928
   period: 1.0471976
   speed: 5
@@ -574,6 +573,7 @@ MonoBehaviour:
   isEnter: 1
   isAnimationEnd: 0
   next: {fileID: 0}
+  playerManager: {fileID: 0}
 --- !u!1 &6872159198087426049
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,7 +725,6 @@ MonoBehaviour:
   isEnter: 0
   isAnimationEnd: 1
   next: {fileID: 6872159197545341797}
-  transition: {fileID: 0}
   amplitude: 31.415928
   period: 1.0471976
   speed: 5
@@ -742,6 +741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45914e958a5a3d489228d46af813112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 0}
 --- !u!1 &6872159198392531293
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,8 +788,10 @@ MonoBehaviour:
   roundTime: {fileID: 6872159198484482515}
   healthSpawner: {fileID: 0}
   specialSpawner: {fileID: 0}
+  playerManager: {fileID: 0}
   roundStart: {fileID: 6872159197545341797}
   timeover: {fileID: 6872159197180585701}
+  gameover: {fileID: 0}
   isRoundEnd: 0
   roundNum: 3
 --- !u!1 &6872159198484482515

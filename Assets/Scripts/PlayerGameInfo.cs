@@ -9,6 +9,7 @@ public class PlayerGameInfo : MonoBehaviour
     //TODO: add integration for player lives/stocks
     //TODO: potentially add integration for roundtime/ number of rounds
     //TODO: link with blast/death animation
+    public roundManager roundTracker;
     public List<GameObject> Players;
 
     public GameObject player1;
@@ -40,9 +41,73 @@ public class PlayerGameInfo : MonoBehaviour
         p1Health = player1.GetComponent<linkPlayerHealth>();
         p2Health = player2.GetComponent<linkPlayerHealth>();
 
+        reset();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(!player1Win && !player2Win){
+            if (p1Health.getHP() <= 0)
+            {
+                player1Dead = true;
+
+                if (player1Lives <= 0)
+                {
+                    player2Win = true;
+                    roundTracker.isRoundEnd = true;
+                }
+                else
+                {
+                    //Respawn player 1
+                }
+            }
+            else if (p2Health.getHP() <= 0)
+            {
+                player2Dead = true;
+
+                if (player1Lives <= 0)
+                {
+                    player1Win = true;
+                    roundTracker.isRoundEnd = true;
+                }
+                else
+                {
+                    //Respawn player 2
+                }
+            }
+        }
+    }
+
+    // evaluate the winner when the timer runs out
+    public void evaluate(){
+        if(player1Lives > player2Lives){
+            player1Win = true;
+        }
+        else if(player1Lives < player2Lives){
+            player2Win = true;
+        }
+        else{
+            if(p1Health.getHP() > p2Health.getHP()){
+                player1Win = true;
+            }
+            else if(p1Health.getHP() < p2Health.getHP()){
+                player2Win = true;
+            }
+            else{
+                // complete draw if possible, lol
+                player1Win = false;
+                player2Win = false;
+            }
+        }
+    }
+
+    public void reset(){
         p1Health.refillFull();
         p2Health.refillFull();
 
+        player1Lives = playerLives;
+        player2Lives = playerLives;
         player1Win = false;
         player2Win = false;
         player1Dead = false;
@@ -52,37 +117,5 @@ public class PlayerGameInfo : MonoBehaviour
         player2Stocks.MarketOpen();
         player1Lives = playerLives;
         player2Lives = playerLives;
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (p1Health.getHP() <= 0)
-        {
-            player1Dead = true;
-
-            if (player1Lives <= 0)
-            {
-                player2Win = true;
-            }
-            else
-            {
-                //Respawn player 1
-            }
-        }
-        else if (p2Health.getHP() <= 0)
-        {
-            player2Dead = true;
-
-            if (player1Lives <= 0)
-            {
-                player1Win = true;
-            }
-            else
-            {
-                //Respawn player 2
-            }
-        }
     }
 }
