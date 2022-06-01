@@ -5,29 +5,39 @@ using UnityEngine;
 public class Hurtbox : MonoBehaviour
 {
     private linkPlayerHealth playerHealth;
-    public BoxCollider hurtbox;
-    public enum ColliderState { Inactive, Active, Colliding };
+    // List of hurtboxes starting from top of the character to the bottom
+    public List<BoxCollider> hurtboxes;
+    public enum ColliderState { Blocking, Active, Colliding };
     public ColliderState state = ColliderState.Active;
+    public bool isHit;
 
     public Color hurtboxColor = Color.green;
-    public Color hurtboxInactive;
+    public Color hurtboxBlock;
     public Color hurtboxCollision;
     
-    public bool GetHitBy(int damage)
+    public void GetHitBy(int damage)
     {
         playerHealth = this.GetComponent<linkPlayerHealth>();
 
-        playerHealth.ApplyDamage(damage);
+        if (!isHit) 
+        { 
+            playerHealth.ApplyDamage(damage); 
+        }
+        isHit = true;
 
-        return true;
+    }
+
+    public void SetCollision()
+    {
+        state = ColliderState.Colliding;
     }
 
     private void UpdateGizmoColor()
     {
         switch (state)
         {
-            case ColliderState.Inactive:
-                Gizmos.color = hurtboxInactive;
+            case ColliderState.Blocking:
+                Gizmos.color = hurtboxBlock;
                 break;
 
             case ColliderState.Colliding:
@@ -43,9 +53,11 @@ public class Hurtbox : MonoBehaviour
     private void OnDrawGizmos()
     {
         UpdateGizmoColor();
+        // Draw all hurtboxes
+        for (int i = 0; i < hurtboxes.Count; ++i) {
+            Gizmos.matrix = Matrix4x4.TRS(hurtboxes[i].transform.position, hurtboxes[i].transform.rotation, hurtboxes[i].transform.localScale);
 
-        Gizmos.matrix = Matrix4x4.TRS(hurtbox.transform.position, hurtbox.transform.rotation, hurtbox.transform.localScale);
-
-        Gizmos.DrawCube(hurtbox.center, hurtbox.size);
+            Gizmos.DrawCube(hurtboxes[i].center, hurtboxes[i].size);
+        }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Hitbox : MonoBehaviour
 {
@@ -17,25 +18,24 @@ public class Hitbox : MonoBehaviour
 
     private Vector3 hitboxSize;
 
+    public Hurtbox enemyHurtbox;
     public Collider[] colliders;
-    public Attack attack;
 
     void Start()
     {
-        colliders = Physics.OverlapBox(hitbox.transform.position, hitboxSize);
-        attack = GetComponentInChildren(typeof(Attack), true) as Attack;
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        Transform playerFromHurtbox;
         if (state == ColliderState.Inactive)
         {
             return;
         }
 
         colliders = Physics.OverlapBox(hitbox.transform.position, hitboxSize, hitbox.transform.rotation, mask);
-
         //TODO: create attack script that controls the amount of damage each attack does via
         // a function that takes an int and is called through the animator event for each attack
         // will use a switch block to select damage and will have a stupid about of public integers
@@ -43,13 +43,23 @@ public class Hitbox : MonoBehaviour
         for (int i = 0; i < colliders.Length; ++i)
         {
             Collider hurtboxCollider = colliders[i];
-            Debug.Log("Hit: " + hurtboxCollider.name + i);
-            attack.Attack_Player(hurtboxCollider);
-            
+            playerFromHurtbox = hurtboxCollider.transform.parent.parent;
+
+            if ( this.transform != playerFromHurtbox)
+            {
+                // Debug.Log("Hit this box");
+                enemyHurtbox = playerFromHurtbox.gameObject.GetComponent<Hurtbox>();
+                enemyHurtbox.state = Hurtbox.ColliderState.Colliding;
+                enemyHurtbox.GetHitBy(1000);
+            }
+            else
+            {
+
+            }
+
         }
 
         state = colliders.Length > 0 ? ColliderState.Colliding : ColliderState.Active;
-
     }
 
     public void StartCollisionDetection()
