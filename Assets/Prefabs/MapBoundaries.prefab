@@ -156,5 +156,5 @@ MonoBehaviour:
   halfYBounds: 10
   halfZBounds: 0
   cameraBound:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
+    m_Center: {x: 0, y: 4.5, z: 0}
+    m_Extent: {x: 15, y: 8.55, z: 0}

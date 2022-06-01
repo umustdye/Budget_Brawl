@@ -39,13 +39,15 @@ public class BlastPlayer : MonoBehaviour
 
             if (!blastZone.blastZoneBounds.Contains(playerPosition))
             {
-                KillPlayer(player);
+                ExplodePlayer(player);
             }
         }
     }
 
-    private void KillPlayer(GameObject player)
+    private void ExplodePlayer(GameObject player)
     {
+        //TODO: Add animation that plays upon blasting of the player
+
         Rigidbody playerBody = player.GetComponent(typeof(Rigidbody)) as Rigidbody;
         PlayerController playerController = player.GetComponent(typeof(PlayerController)) as PlayerController;
 
