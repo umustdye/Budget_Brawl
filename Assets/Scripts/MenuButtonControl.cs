@@ -28,7 +28,7 @@ public class MenuButtonControl : MonoBehaviour
 
     public void LevelLoadButton(GameObject level)
     {
-        string level_name = level.GetComponent<TextMeshProUGUI>().text;
+        string level_name = level.GetComponent<TextMeshProUGUI>().tag;
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(level_name);
     }
 

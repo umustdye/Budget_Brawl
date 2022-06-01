@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Player1
-  - Player2
+  - CastleMap
+  - 3D_Map
   layers:
   - Default
   - TransparentFX
