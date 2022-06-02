@@ -18,11 +18,8 @@ public class Hurtbox : MonoBehaviour
     public void GetHitBy(int damage)
     {
         playerHealth = this.GetComponent<linkPlayerHealth>();
-
-        if (!isHit) 
-        { 
-            playerHealth.ApplyDamage(damage); 
-        }
+        playerHealth.ApplyDamage(damage); 
+        
         isHit = true;
 
     }

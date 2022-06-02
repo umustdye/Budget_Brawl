@@ -5,30 +5,39 @@ using System;
 
 public class Hitbox : MonoBehaviour
 {
-    public LayerMask mask;
+    private LayerMask mask;
     public GameObject hitbox;
     public Color hitboxColor = Color.red;
 
     public ColliderState state;
     public enum ColliderState { Inactive, Active, Colliding };
 
+    private CombatScript combatAction;
+    public int punchDamage;
+    public int kickDamage;
+    public int specialAttackDamage;
+
     // Colors to test functioning hitbox
-    public Color hitboxInactive;
-    public Color hitboxCollision;
+    private Color hitboxInactive;
+    private Color hitboxCollision;
 
     private Vector3 hitboxSize;
 
-    public Hurtbox enemyHurtbox;
+    public List<Hurtbox> enemyHurtboxes;
     public Collider[] colliders;
 
     void Start()
     {
-
+        mask = LayerMask.GetMask("AllHitboxes");
+        combatAction = this.GetComponent<CombatScript>();
+        hitbox = transform.Find("Hitbox").gameObject;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        // counts number of colliders that belongs to itself
+        int selfCollide = 0;
         Transform playerFromHurtbox;
         if (state == ColliderState.Inactive)
         {
@@ -43,23 +52,27 @@ public class Hitbox : MonoBehaviour
         for (int i = 0; i < colliders.Length; ++i)
         {
             Collider hurtboxCollider = colliders[i];
-            playerFromHurtbox = hurtboxCollider.transform.parent.parent;
+            playerFromHurtbox = hurtboxCollider.transform.root;
 
             if ( this.transform != playerFromHurtbox)
             {
-                // Debug.Log("Hit this box");
-                enemyHurtbox = playerFromHurtbox.gameObject.GetComponent<Hurtbox>();
+                //TODO: convert this portion to a new script/function
+                Hurtbox enemyHurtbox = playerFromHurtbox.gameObject.GetComponent<Hurtbox>();
                 enemyHurtbox.state = Hurtbox.ColliderState.Colliding;
-                enemyHurtbox.GetHitBy(1000);
+                if (!enemyHurtbox.isHit)
+                {
+                    enemyHurtbox.GetHitBy(GetDamage());
+                    enemyHurtboxes.Add(enemyHurtbox);
+                }
             }
             else
             {
-
+                ++selfCollide;
             }
 
         }
 
-        state = colliders.Length > 0 ? ColliderState.Colliding : ColliderState.Active;
+        state = colliders.Length > selfCollide ? ColliderState.Colliding : ColliderState.Active;
     }
 
     public void StartCollisionDetection()
@@ -73,6 +86,37 @@ public class Hitbox : MonoBehaviour
     {
         state = ColliderState.Inactive;
         hitbox.SetActive(false);
+        ResetEnemyHurtbox();
+    }
+
+    private void ResetEnemyHurtbox()
+    {
+        for (int i = 0; i < enemyHurtboxes.Count; ++i)
+        {
+            enemyHurtboxes[i].isHit = false;
+            enemyHurtboxes[i].state = Hurtbox.ColliderState.Active;
+        }
+    }
+
+    public int GetDamage()
+    {
+        int attackDamage = 0;
+
+        if (combatAction.is_punching)
+        {
+            attackDamage = punchDamage;
+        }
+        else if (combatAction.is_kicking)
+        {
+            attackDamage = kickDamage;
+        }
+        else if (combatAction.is_special_attack)
+        {
+            attackDamage = specialAttackDamage;
+        }
+
+
+        return attackDamage;
     }
 
     private void UpdateGizmoColor()
