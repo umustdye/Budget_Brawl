@@ -7,7 +7,7 @@ public class Hitbox : MonoBehaviour
 {
     private LayerMask mask;
     public GameObject hitbox;
-    public Color hitboxColor = Color.red;
+    public Color hitboxColor = new Color(1f, 0f, 0f, 0.3921569f);
 
     public ColliderState state;
     public enum ColliderState { Inactive, Active, Colliding };
@@ -29,6 +29,7 @@ public class Hitbox : MonoBehaviour
     void Start()
     {
         mask = LayerMask.GetMask("AllHitboxes");
+        hitboxColor = new Color(255, 0, 0, 100);
         combatAction = this.GetComponent<CombatScript>();
         hitbox = transform.Find("Hitbox").gameObject;
     }
