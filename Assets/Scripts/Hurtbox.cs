@@ -7,18 +7,36 @@ public class Hurtbox : MonoBehaviour
     private linkPlayerHealth playerHealth;
     // List of hurtboxes starting from top of the character to the bottom
     public List<BoxCollider> hurtboxes;
+    public int chipPercent = 15;
+
     public enum ColliderState { Blocking, Active, Colliding };
     public ColliderState state = ColliderState.Active;
     public bool isHit;
 
+    private CombatScript combatAction;
+
     public Color hurtboxColor = Color.green;
     public Color hurtboxBlock;
     public Color hurtboxCollision;
-    
+
+    void Start()
+    {
+        combatAction = this.GetComponent<CombatScript>();    
+    }
+
     public void GetHitBy(int damage)
     {
         playerHealth = this.GetComponent<linkPlayerHealth>();
-        playerHealth.ApplyDamage(damage); 
+
+        if (combatAction.is_blocking)
+        {
+            int chipDamage = damage * (chipPercent/100);
+            playerHealth.ApplyDamage(chipDamage);
+        }
+        else
+        {
+            playerHealth.ApplyDamage(damage);
+        }
         
         isHit = true;
 
