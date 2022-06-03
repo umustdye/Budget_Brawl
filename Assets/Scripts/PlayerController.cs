@@ -126,12 +126,12 @@ public class PlayerController : MonoBehaviour
         is_walking = is_touching_ground && input.player_direction != 0 && !input.sprint && !combat.is_blocking;
         is_sprinting = is_touching_ground && input.player_direction != 0 && input.sprint && !combat.is_blocking;
 
-        // Update velocity
-        if(combat.is_blocking || (combat.IsAttacking() && is_touching_ground))
+        // Stop movement if attacking / blocking else update movement speed if not special attacking
+        if(combat.is_blocking || (combat.is_punching || combat.is_kicking) && is_touching_ground)
         {
             horizontal_velocity_delta = -rigid_body.velocity.x; // Stop player movement during combat
         }
-        else
+        else if(!combat.is_special_attack)
         {
             float target_speed = input.sprint ? sprint_speed : walk_speed;
             horizontal_velocity_delta = input.player_direction * target_speed - rigid_body.velocity.x;
