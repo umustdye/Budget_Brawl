@@ -27,6 +27,9 @@ public class characterSelect : MonoBehaviour
 
         blue = Resources.Load<Sprite>("Dr.Big_Apple");
         red = Resources.Load<Sprite>("Female_Humanoid");
+
+        PlayerPrefs.SetInt("Player1", 0);
+        PlayerPrefs.SetInt("Player2", 1);
     }
 
     // Update is called once per frame
