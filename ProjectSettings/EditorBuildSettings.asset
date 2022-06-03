@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScenes/CastleMap.unity
     guid: 523716c0b1a08c34e942ce15fe37d7ba
+  - enabled: 1
+    path: Assets/Scenes/TestScenes/CartoonMap.unity
+    guid: e768dc84941f4dc4ab856876f681893a
   m_configObjects: {}

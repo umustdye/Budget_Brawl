@@ -8,6 +8,7 @@ TagManager:
   - 3D_Map
   - Player1
   - Player2
+  - CartoonMap
   layers:
   - Default
   - TransparentFX
