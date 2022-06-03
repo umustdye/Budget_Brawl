@@ -8,7 +8,7 @@ public class Hurtbox : MonoBehaviour
     // List of hurtboxes starting from top of the character to the bottom
     public List<BoxCollider> hurtboxes;
     public int chipPercent = 15;
-
+    public SoundEffects soundFX;
     public enum ColliderState { Blocking, Active, Colliding };
     public ColliderState state = ColliderState.Active;
     public bool isHit;
@@ -27,6 +27,7 @@ public class Hurtbox : MonoBehaviour
         hurtboxBlock = new Color(0f, 0.9363262f, 1f, 0.3921569f);
         hurtboxCollision = new Color(0.7411765f, 0, 0.9725491f, 0.3921569f);
         rb = GetComponent<Rigidbody>();
+        soundFX = GetComponent<SoundEffects>();
     }
 
     public void GetHitBy(int damage)
@@ -42,10 +43,11 @@ public class Hurtbox : MonoBehaviour
         else
         {
             playerHealth.ApplyDamage(damage);
-            rb.velocity = new Vector3(5, 2, 0); ;
+            rb.velocity = new Vector3(5, 2, 0);
         }
         
         isHit = true;
+        soundFX.play_Kick_Impact_Sound();
 
     }
 

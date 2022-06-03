@@ -54,7 +54,7 @@ public class CombatScript : MonoBehaviour
             }
         }
 
-        if(is_kicking)
+        else if(is_kicking)
         {
             kick_delta += Time.deltaTime;
             if(kick_delta >= kick_time) 
@@ -64,7 +64,7 @@ public class CombatScript : MonoBehaviour
             }
         }
 
-        if(is_special_attack)
+        else if(is_special_attack)
         {
             special_attack_delta += Time.deltaTime;
             if(special_attack_delta >= special_attack_time)

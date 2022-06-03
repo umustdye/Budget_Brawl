@@ -12,7 +12,7 @@ public class linkPlayerHealth : MonoBehaviour
     public bool dead;
     public bool isRespawning;
     //bool revived;
-    private int lowHealthFactor = 2;
+    private int lowHealthFactor = 4;
 
     // health bar may be dynamically assigned when the game starts
     public HealthBar healthBar;
