@@ -1640,24 +1640,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1924c7c7488c129449fbe75f3f8e5247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1017049762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1017049760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06275862d3e77c544ad7b8aac5258dde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnTimer: 5
-  P1SpawnPoint: {x: -3, y: 4, z: 0}
-  P2SpawnPoint: {x: -1.5, y: 4, z: 0}
-  P3SpawnPoint: {x: 1.5, y: 4, z: 0}
-  P4SpawnPoint: {x: 3, y: 4, z: 0}
-  spawnPointPositions: []
 --- !u!1001 &1067313591
 PrefabInstance:
   m_ObjectHideFlags: 0
