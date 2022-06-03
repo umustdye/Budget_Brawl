@@ -64,5 +64,7 @@ public class BlastPlayer : MonoBehaviour
 
         linkPlayerHealth playerHealth = player.GetComponent<linkPlayerHealth>();
         playerHealth.ApplyDamage(playerHealth.maxHP);
+
+        // Debug.Log(playerHealth.getHP());
     }
 }
