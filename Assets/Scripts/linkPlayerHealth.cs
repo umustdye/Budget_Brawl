@@ -40,22 +40,31 @@ public class linkPlayerHealth : MonoBehaviour
 
     public void ApplyDamage(int damage)
     {
-        currentHP -= damage;
-        // just in case of underflow
-        if(currentHP < 0){
-            currentHP = 0;
+        if(!dead)
+        {
+            currentHP -= damage;
+            // just in case of underflow
+            if(currentHP < 0){
+                currentHP = 0;
+            }
+            healthBar.SetHealth(currentHP);            
         }
-        healthBar.SetHealth(currentHP);
+
 
     }
     public void ApplyHealing(int hpRestored)
     {
-        currentHP += hpRestored;
-        // just in case of overflow
-        if(currentHP > maxHP){
-            currentHP = maxHP;
+        if(!dead)
+        {
+            currentHP += hpRestored;
+            // just in case of overflow
+            if(currentHP > maxHP){
+                currentHP = maxHP;
+            }
+            healthBar.SetHealth(currentHP);           
         }
-        healthBar.SetHealth(currentHP);
+        
+
     }
 
     public int getHP(){
