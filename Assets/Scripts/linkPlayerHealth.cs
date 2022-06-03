@@ -23,6 +23,7 @@ public class linkPlayerHealth : MonoBehaviour
         currentHP = maxHP;
         healthBar.SetMaxHealth(maxHP);
         isRespawning = false;
+        dead = false;
     }
 
     // Update is called once per frame
@@ -39,22 +40,32 @@ public class linkPlayerHealth : MonoBehaviour
 
     public void ApplyDamage(int damage)
     {
-        currentHP -= damage;
-        // just in case of underflow
-        if(currentHP < 0){
-            currentHP = 0;
+        //do not decrease health if the player is dead
+        if(!dead)
+        {
+            currentHP -= damage;
+            // just in case of underflow
+            if(currentHP < 0){
+                currentHP = 0;
+            }
+            healthBar.SetHealth(currentHP);            
         }
-        healthBar.SetHealth(currentHP);
+
 
     }
     public void ApplyHealing(int hpRestored)
     {
-        currentHP += hpRestored;
-        // just in case of overflow
-        if(currentHP > maxHP){
-            currentHP = maxHP;
+        //do not allow the player to get more health if dead
+        if(!dead)
+        {
+            currentHP += hpRestored;
+            // just in case of overflow
+            if(currentHP > maxHP){
+                currentHP = maxHP;
+            }
+            healthBar.SetHealth(currentHP);            
         }
-        healthBar.SetHealth(currentHP);
+
     }
 
     public int getHP(){
@@ -62,7 +73,8 @@ public class linkPlayerHealth : MonoBehaviour
     }
 
     void updateLowHealthStatus()
-    {   
+    {
+
         if(currentHP <= 0)
         {
             dead = true;

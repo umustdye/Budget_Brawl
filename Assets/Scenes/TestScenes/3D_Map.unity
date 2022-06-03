@@ -2409,6 +2409,7 @@ MonoBehaviour:
   - {fileID: 793394432}
   - {fileID: 253145826}
   chipPercent: 15
+  soundFX: {fileID: 0}
   state: 1
   isHit: 0
   hurtboxColor: {r: 0, g: 1, b: 0, a: 0.196}
@@ -2473,6 +2474,7 @@ MonoBehaviour:
   - {fileID: 1256403911}
   - {fileID: 157953480}
   chipPercent: 15
+  soundFX: {fileID: 0}
   state: 1
   isHit: 0
   hurtboxColor: {r: 0, g: 1, b: 0, a: 0.196}

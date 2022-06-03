@@ -5,7 +5,7 @@ using UnityEngine;
 public class Respawn : MonoBehaviour
 {
 
-    public float respawnTimer;
+    public float respawnTimer; 
     private PlayerGameInfo playerGameInfo;
     private List<GameObject> players;
     private bool isDead;
