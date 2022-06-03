@@ -2143,7 +2143,7 @@ GameObject:
   - component: {fileID: -8542889705590632009}
   m_Layer: 0
   m_Name: Dr. Big Apple Humanoid
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7220,6 +7220,7 @@ MonoBehaviour:
   currentHP: 0
   lowHealth: 0
   dead: 0
+  isRespawning: 0
   healthBar: {fileID: 0}
 --- !u!114 &-8542889705590632009
 MonoBehaviour:

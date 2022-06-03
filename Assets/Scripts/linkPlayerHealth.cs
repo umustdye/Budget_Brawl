@@ -6,6 +6,7 @@ public class linkPlayerHealth : MonoBehaviour
 {
     public int maxHP = 10000;
     public int currentHP;
+    public int lives;
 
     //determining low health
     public bool lowHealth;
@@ -16,13 +17,12 @@ public class linkPlayerHealth : MonoBehaviour
 
     // health bar may be dynamically assigned when the game starts
     public HealthBar healthBar;
+    public Stonks stocks;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentHP = maxHP;
-        healthBar.SetMaxHealth(maxHP);
-        isRespawning = false;
+        
     }
 
     // Update is called once per frame
@@ -81,5 +81,15 @@ public class linkPlayerHealth : MonoBehaviour
                 lowHealth = false;
             }
         }
+    }
+
+    public void initializeHealthBar(HealthBar healthUI, Stonks s, int l){
+        healthBar = healthUI;
+        stocks = s;
+        lives = l;
+
+        currentHP = maxHP;
+        healthBar.SetMaxHealth(maxHP);
+        isRespawning = false;
     }
 }

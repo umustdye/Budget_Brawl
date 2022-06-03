@@ -10,6 +10,8 @@ public class Respawn : MonoBehaviour
     private List<GameObject> players;
     private bool isDead;
 
+    bool respawn = false;
+
     // Initialize default values for spawnpoints
     public Vector3 P1SpawnPoint = Vector3.zero;
     public Vector3 P2SpawnPoint = Vector3.zero;
@@ -33,30 +35,32 @@ public class Respawn : MonoBehaviour
         for (int i = 0; i < players.Count; ++i)
         {
             player = players[i];
-            isDead = player.GetComponent<linkPlayerHealth>().dead;
+            linkPlayerHealth playerHealth = player.GetComponent<linkPlayerHealth>();
+            isDead = playerHealth.dead;
 
             if (isDead)
             {
-                if (!player.GetComponent<linkPlayerHealth>().isRespawning)
+                if (!playerHealth.isRespawning)
                 {
-                    player.GetComponent<linkPlayerHealth>().isRespawning = true;
-                    respawnCoroutine = RespawnPlayer(player, i);
-                    Debug.Log("Dead Player");
-                    StartCoroutine(respawnCoroutine);
-
+                    RespawnPlayer(player, i);
+                    playerHealth.stocks.minusOneStock(ref playerHealth.lives);
+                    if(i == 0){
+                        playerGameInfo.player1Lives--;
+                    }
+                    else{
+                        playerGameInfo.player2Lives--;
+                    }
+                    Debug.Log("Player died: " + playerHealth.lives);
                 }
             }
-
         }
     }
 
-    IEnumerator RespawnPlayer(GameObject player, int playerIndex)
+    void RespawnPlayer(GameObject player, int playerIndex)
     {
         Rigidbody playerBody = player.GetComponent(typeof(Rigidbody)) as Rigidbody;
         PlayerController playerController = player.GetComponent(typeof(PlayerController)) as PlayerController;
 
-        yield return new WaitForSeconds(respawnTimer);
-        
         // Move player to spawn point
         player.transform.position = spawnPointPositions[playerIndex];
         // Reset scale of player back to default

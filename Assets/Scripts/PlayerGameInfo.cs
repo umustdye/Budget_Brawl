@@ -19,7 +19,7 @@ public class PlayerGameInfo : MonoBehaviour
     private linkPlayerHealth p2Health;
     public Stonks player1Stocks;
     public Stonks player2Stocks;
-    public static int playerLives = 4;
+    public static int playerLives = 3;
     public int player1Lives;
     public int player2Lives;
 
@@ -38,21 +38,17 @@ public class PlayerGameInfo : MonoBehaviour
         // after implementing map select and transition between round and menu
         // we have to dynamically add players to generalize certain logics we have right now
         // can easily be shortend by having a designated player list
-        p1Health = player1.GetComponent<linkPlayerHealth>();
-        p2Health = player2.GetComponent<linkPlayerHealth>();
-
-        reset();
     }
 
     // Update is called once per frame
     void Update()
     {
         if(!player1Win && !player2Win){
-            if (p1Health.getHP() <= 0)
+            if (p1Health.getHP() < 1)
             {
                 player1Dead = true;
 
-                if (player1Lives <= 0)
+                if (player1Lives < 1)
                 {
                     player2Win = true;
                     roundTracker.isRoundEnd = true;
@@ -62,11 +58,11 @@ public class PlayerGameInfo : MonoBehaviour
                     //Respawn player 1
                 }
             }
-            else if (p2Health.getHP() <= 0)
+            else if (p2Health.getHP() < 1)
             {
                 player2Dead = true;
 
-                if (player1Lives <= 0)
+                if (player2Lives < 1)
                 {
                     player1Win = true;
                     roundTracker.isRoundEnd = true;
@@ -117,5 +113,16 @@ public class PlayerGameInfo : MonoBehaviour
         player2Stocks.MarketOpen();
         player1Lives = playerLives;
         player2Lives = playerLives;
+    }
+
+    public void initializePlayer(GameObject[] players){
+        for(int i = 0; i < players.Length; i++){
+            Players.Add(players[i]);
+        }
+
+        p1Health = Players[0].GetComponent<linkPlayerHealth>();
+        p2Health = Players[1].GetComponent<linkPlayerHealth>();
+
+        reset();
     }
 }
