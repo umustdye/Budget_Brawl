@@ -17,7 +17,6 @@ public class Stonks : MonoBehaviour
     }
     public void minusOneStock(ref int playerLives)
     {
-        // Debug.Log("Player died");
         if (playerLives > 0)
         {
             Transform lostStock = gameObject.transform.GetChild(--playerLives);

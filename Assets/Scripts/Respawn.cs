@@ -50,7 +50,6 @@ public class Respawn : MonoBehaviour
                     else{
                         playerGameInfo.player2Lives--;
                     }
-                    Debug.Log("Player died: " + playerHealth.lives);
                 }
             }
         }

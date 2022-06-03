@@ -7,6 +7,7 @@ public class linkPlayerHealth : MonoBehaviour
     public int maxHP = 10000;
     public int currentHP;
     public int lives;
+    private int MAX_LIVES;
 
     //determining low health
     public bool lowHealth;
@@ -87,9 +88,14 @@ public class linkPlayerHealth : MonoBehaviour
         healthBar = healthUI;
         stocks = s;
         lives = l;
+        MAX_LIVES = l;
 
         currentHP = maxHP;
         healthBar.SetMaxHealth(maxHP);
         isRespawning = false;
+    }
+
+    public void updateLives(){
+        lives = MAX_LIVES;
     }
 }

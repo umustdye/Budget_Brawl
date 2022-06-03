@@ -113,6 +113,10 @@ public class PlayerGameInfo : MonoBehaviour
         player2Stocks.MarketOpen();
         player1Lives = playerLives;
         player2Lives = playerLives;
+
+        for(int i = 0; i < Players.Count; i++){
+            Players[i].GetComponent<linkPlayerHealth>().updateLives();
+        }
     }
 
     public void initializePlayer(GameObject[] players){

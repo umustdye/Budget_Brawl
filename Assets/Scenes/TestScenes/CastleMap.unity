@@ -466,7 +466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6003010928622997765, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: p1.z
-      value: -0.23
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6003010928622997765, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: p2.x
@@ -478,7 +478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6003010928622997765, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: p2.z
-      value: -0.23
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6003010928622997765, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: right
