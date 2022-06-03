@@ -66,6 +66,7 @@ public class linkPlayerHealth : MonoBehaviour
     {   
         if(currentHP <= 0)
         {
+            Debug.Log("Player is dead");
             dead = true;
         }
 

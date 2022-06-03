@@ -38,11 +38,12 @@ public class Respawn : MonoBehaviour
             linkPlayerHealth playerHealth = player.GetComponent<linkPlayerHealth>();
             isDead = playerHealth.dead;
 
-            if (isDead)
+            if (playerHealth.getHP() <= 0)
             {
                 if (!playerHealth.isRespawning)
                 {
-                    RespawnPlayer(player, i);
+                    player.GetComponent<linkPlayerHealth>().isRespawning = true;
+                    respawnCoroutine = RespawnPlayer(player, i);
                     playerHealth.stocks.minusOneStock(ref playerHealth.lives);
                     if(i == 0){
                         playerGameInfo.player1Lives--;
@@ -50,20 +51,31 @@ public class Respawn : MonoBehaviour
                     else{
                         playerGameInfo.player2Lives--;
                     }
+                    StartCoroutine(respawnCoroutine);
+                    
                 }
+            }
+            else
+            {
+                player.GetComponent<linkPlayerHealth>().isRespawning = false;
             }
         }
     }
 
-    void RespawnPlayer(GameObject player, int playerIndex)
+    IEnumerator RespawnPlayer(GameObject player, int playerIndex)
     {
+        Debug.Log("Respawning...");
+
         Rigidbody playerBody = player.GetComponent(typeof(Rigidbody)) as Rigidbody;
         PlayerController playerController = player.GetComponent(typeof(PlayerController)) as PlayerController;
+
+        yield return new WaitForSeconds(respawnTimer);
 
         // Move player to spawn point
         player.transform.position = spawnPointPositions[playerIndex];
         // Reset scale of player back to default
         player.transform.localScale = new Vector3(1, 1, 1);
+        
 
         // Unfreeze player
         playerBody.constraints = RigidbodyConstraints.None;

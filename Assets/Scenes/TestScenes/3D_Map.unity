@@ -457,6 +457,34 @@ PrefabInstance:
       propertyPath: Players.Array.data[3]
       value: 
       objectReference: {fileID: 8160044105240706494, guid: e19ead425679f5941a46591f55a1c77e, type: 3}
+    - target: {fileID: 2584826746773507577, guid: e13217e6925167645b271cd7eb15e099, type: 3}
+      propertyPath: respawnTimer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584826746773507577, guid: e13217e6925167645b271cd7eb15e099, type: 3}
+      propertyPath: P1SpawnPoint.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584826746773507577, guid: e13217e6925167645b271cd7eb15e099, type: 3}
+      propertyPath: P1SpawnPoint.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584826746773507577, guid: e13217e6925167645b271cd7eb15e099, type: 3}
+      propertyPath: P1SpawnPoint.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584826746773507577, guid: e13217e6925167645b271cd7eb15e099, type: 3}
+      propertyPath: P2SpawnPoint.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584826746773507577, guid: e13217e6925167645b271cd7eb15e099, type: 3}
+      propertyPath: P2SpawnPoint.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584826746773507577, guid: e13217e6925167645b271cd7eb15e099, type: 3}
+      propertyPath: P2SpawnPoint.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4569837669056003341, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: m_RootOrder
       value: 2
