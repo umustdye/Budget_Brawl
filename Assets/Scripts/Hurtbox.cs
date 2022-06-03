@@ -34,7 +34,7 @@ public class Hurtbox : MonoBehaviour
         if (combatAction.is_blocking)
         {
             float chipDamage = ((float) damage * (chipPercent/100f));
-            Debug.Log("Chip Damage: " + Mathf.RoundToInt(chipDamage));
+            // Debug.Log("Chip Damage: " + Mathf.RoundToInt(chipDamage));
             playerHealth.ApplyDamage(Mathf.RoundToInt(chipDamage));
         }
         else
