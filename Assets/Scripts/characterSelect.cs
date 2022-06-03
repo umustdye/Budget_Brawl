@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class characterSelect : MonoBehaviour
 {
     public Color normal;
-    public Image display;
+    public GameObject display;
 
     Sprite blue;
     Sprite red;
@@ -27,9 +27,6 @@ public class characterSelect : MonoBehaviour
 
         blue = Resources.Load<Sprite>("Dr.Big_Apple");
         red = Resources.Load<Sprite>("Female_Humanoid");
-
-        p1SelectBlue();
-        p2SelectRed();
     }
 
     // Update is called once per frame
@@ -41,20 +38,28 @@ public class characterSelect : MonoBehaviour
     public void p1SelectBlue(){
         // 0 is blue guy
         PlayerPrefs.SetInt("Player1", 0);
+        display.transform.rotation = Quaternion.Euler(0, 0, 0);
+        display.GetComponent<Image>().sprite = blue;
     }
 
     public void p1SelectRed(){
         // 1 is red guy
         PlayerPrefs.SetInt("Player1", 1);
+        display.transform.rotation = Quaternion.Euler(0, 180, 0);
+        display.GetComponent<Image>().sprite = red;
     }
 
     public void p2SelectBlue(){
         // 0 is blue guy
         PlayerPrefs.SetInt("Player2", 0);
+        display.transform.rotation = Quaternion.Euler(0, 180, 0);
+        display.GetComponent<Image>().sprite = blue;
     }
 
     public void p2SelectRed(){
         // 1 is red guy
         PlayerPrefs.SetInt("Player2", 1);
+        display.transform.rotation = Quaternion.Euler(0, 0, 0);
+        display.GetComponent<Image>().sprite = red;
     }
 }

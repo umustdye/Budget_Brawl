@@ -46,6 +46,7 @@ public class PlayerGameInfo : MonoBehaviour
         if(!player1Win && !player2Win){
             if (p1Health.getHP() < 1)
             {
+                // Debug.Log("Player 1 Died");
                 player1Dead = true;
 
                 if (player1Lives < 1)
@@ -60,6 +61,7 @@ public class PlayerGameInfo : MonoBehaviour
             }
             else if (p2Health.getHP() < 1)
             {
+                // Debug.Log("Player 2 Died");
                 player2Dead = true;
 
                 if (player2Lives < 1)
