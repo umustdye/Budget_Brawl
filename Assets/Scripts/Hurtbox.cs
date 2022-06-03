@@ -18,6 +18,7 @@ public class Hurtbox : MonoBehaviour
     public Color hurtboxColor = new Color(0f, 1f, 0f, 0.1960f);
     public Color hurtboxBlock = new Color(0f, 0.9363262f, 1f, 0.3921569f);
     public Color hurtboxCollision = new Color(0.7411765f, 0, 0.9725491f, 0.3921569f);
+    public Rigidbody rb;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class Hurtbox : MonoBehaviour
         hurtboxColor = new Color(0f, 1f, 0f, 0.1960f);
         hurtboxBlock = new Color(0f, 0.9363262f, 1f, 0.3921569f);
         hurtboxCollision = new Color(0.7411765f, 0, 0.9725491f, 0.3921569f);
+        rb = GetComponent<Rigidbody>();
     }
 
     public void GetHitBy(int damage)
@@ -39,6 +41,7 @@ public class Hurtbox : MonoBehaviour
         else
         {
             playerHealth.ApplyDamage(damage);
+            rb.velocity = new Vector3(5, 2, 0); ;
         }
         
         isHit = true;

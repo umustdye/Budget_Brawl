@@ -688,6 +688,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2229060151305112321, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2229060151305112321, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
       propertyPath: m_LocalPosition.y
       value: 6.5
       objectReference: {fileID: 0}
@@ -753,7 +757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4429545374724517872, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
       propertyPath: halfZBounds
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4429545374724517872, guid: c70aa21ea69fee54f89a43f786386421, type: 3}
       propertyPath: blastZoneBounds.m_Center.y
@@ -6800,6 +6804,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1924c7c7488c129449fbe75f3f8e5247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1017049762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017049760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06275862d3e77c544ad7b8aac5258dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnTimer: 0
+  P1SpawnPoint: {x: -1.5, y: 5, z: 0}
+  P2SpawnPoint: {x: 1.5, y: 5, z: 0}
+  P3SpawnPoint: {x: 0, y: 0, z: 0}
+  P4SpawnPoint: {x: 0, y: 0, z: 0}
+  spawnPointPositions: []
 --- !u!114 &1017049764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28111,6 +28133,7 @@ MonoBehaviour:
   hurtboxColor: {r: 0, g: 1, b: 0, a: 0.196}
   hurtboxBlock: {r: 0, g: 0.9363262, b: 1, a: 0.3921569}
   hurtboxCollision: {r: 0.7411765, g: 0, b: 0.9725491, a: 0.3921569}
+  rb: {fileID: 0}
 --- !u!1001 &2009598677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28263,6 +28286,7 @@ MonoBehaviour:
   hurtboxColor: {r: 0, g: 1, b: 0, a: 0.196}
   hurtboxBlock: {r: 0, g: 0.9363262, b: 1, a: 0.3921569}
   hurtboxCollision: {r: 0.7411765, g: 0, b: 0.9725491, a: 0.3921569}
+  rb: {fileID: 0}
 --- !u!114 &2024695777
 MonoBehaviour:
   m_ObjectHideFlags: 0
