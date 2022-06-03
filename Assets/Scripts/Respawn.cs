@@ -52,7 +52,6 @@ public class Respawn : MonoBehaviour
                         playerGameInfo.player2Lives--;
                     }
                     StartCoroutine(respawnCoroutine);
-                    
                 }
             }
             else
