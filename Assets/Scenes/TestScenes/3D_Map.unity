@@ -609,7 +609,7 @@ PrefabInstance:
       objectReference: {fileID: 8160044105240706494, guid: e19ead425679f5941a46591f55a1c77e, type: 3}
     - target: {fileID: 2584826746773507577, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: respawnTimer
-      value: 5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2584826746773507577, guid: e13217e6925167645b271cd7eb15e099, type: 3}
       propertyPath: P1SpawnPoint.x
