@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemInteraction : MonoBehaviour
 {
+    public float fixedZ;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,8 +31,7 @@ public class ItemInteraction : MonoBehaviour
             // when player touches cube, player slightly moves in Z-axis
             // to counteract distortion, physically foced player to stay at one Z-position
             // z-position is hard coded right now
-            float zPos = collide.gameObject.transform.position.z;
-            collide.gameObject.transform.position = new Vector3(collide.gameObject.transform.position.x, collide.gameObject.transform.position.y, zPos);
+            collide.gameObject.transform.position = new Vector3(collide.gameObject.transform.position.x, collide.gameObject.transform.position.y, fixedZ);
 
             // on collision item should be dispensed from ItemSpanwer.childItems and disappear
             Destroy(gameObject);
